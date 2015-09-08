@@ -11,6 +11,8 @@
     <bean id="hibernateCoffeeBrandDao" class="com.shestakam.coffee.brand.dao.HibernateCoffeeBrandDao">
     </bean>
 
+    <bean id="coffeBrandService" class="com.shestakam.coffee.brand.service.CoffeeBrandServiceImpl"/>
+
 
     <bean id="myDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
