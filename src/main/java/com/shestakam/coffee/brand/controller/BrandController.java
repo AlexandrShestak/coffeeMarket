@@ -5,6 +5,8 @@ import com.shestakam.coffee.brand.service.CoffeeBrandService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -23,6 +25,7 @@ public class BrandController {
         this.coffeeBrandService = coffeeBrandService;
     }
 
+    @RequestMapping(value = "/brands",method = RequestMethod.GET)
     public List<CoffeeBrand> getAllBrands() {
         logger.debug("get all brands");
 

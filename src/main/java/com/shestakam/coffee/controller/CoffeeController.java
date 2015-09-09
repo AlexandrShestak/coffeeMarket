@@ -1,4 +1,4 @@
-package com.shestakam.controller;
+package com.shestakam.coffee.controller;
 
 import org.springframework.web.bind.annotation.RestController;
 
