@@ -16,6 +16,9 @@
   <script type="text/javascript"  src="${pageContext.servletContext.contextPath}/script/brandController.js"></script>
   <script type="text/javascript"  src="${pageContext.servletContext.contextPath}/script/angular-resource.js"></script>
   <script type="text/javascript"  src="${pageContext.servletContext.contextPath}/script/angular-route.js"></script>
+  <script type="text/javascript"  src="${pageContext.servletContext.contextPath}/script/jquery-2.1.4.js"></script>
+  <script type="text/javascript"  src="${pageContext.servletContext.contextPath}/script/myJquery.js"></script>
+
   <link href="${pageContext.servletContext.contextPath}/bootstrap-3.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
   <!--  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>-->
 </head>
@@ -28,8 +31,12 @@
 <button class="btn-warning">FFFFFFFFFFFFFFFFF</button>
 <div class="container" ng-controller="SimpleBrandController">
 
+  <h1>Search:</h1>
+  <input type="text" data-ng-model="searchText"/>
   <ul>
-    <li ng-repeat="brand in brands">
+    <li ng-repeat="brand in brands | filter:searchText | orderBy:'name'">
+      <input type="checkbox" class="checkCoffee">
+      <input  type="text" hidden="hidden" class="countCoffee">
       {{brand.name}}
     </li>
   </ul>
