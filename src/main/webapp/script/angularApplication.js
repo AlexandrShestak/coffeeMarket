@@ -38,22 +38,18 @@ myApp.factory('brandFactory',function($resource){
     return factory;*/
 });
 
-myApp.controller('SimpleBrandController', function($scope,brandFactory) {
+myApp.controller('simpleBrandController', function($scope,brandFactory) {
     $scope.brands = brandFactory.query(function() {
         console.log("tratata");
     });
-   /* alert('1')
-    brandFactory.async().then(function(d) { //2. so you can use .then()
-        $scope.brands = d;
-    });
-    $scope.brands = brandFactory.getBrands();*/
+
+});
+
+myApp.config(function($routeProvider){
+    $routeProvider
+        .when( '/coffee', { controller: 'simpleBrandController', templateUrl: '/pages/brands.jsp' } )
+        .when('/order', { controller: 'simpleBrandController', templateUrl: '/pages/order.jsp' })
+        .otherwise( { redirectTo: '/pages/brands.jsp' } );
 });
 
 
-
-/*myApp.factory('Phone', ['$resource',
-    function($resource){
-        return $resource('phones/.json', {}, {
-            query: {method:'GET', params:{}, isArray:true}
-        });
-    }]);*/
