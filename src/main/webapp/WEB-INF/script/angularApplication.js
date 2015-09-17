@@ -47,9 +47,10 @@ myApp.controller('simpleBrandController', function($scope,brandFactory) {
 
 myApp.config(function($routeProvider){
     $routeProvider
-        .when( '/coffee', { controller: 'simpleBrandController', templateUrl: '/pages/brands.jsp' } )
-        .when('/order', { controller: 'simpleBrandController', templateUrl: '/pages/order.jsp' })
-        .otherwise( { redirectTo: '/pages/brands.jsp' } );
+        .when( '/brands', { controller: 'simpleBrandController', templateUrl: 'pages/brands.jsp' } )
+        .when('/order', { controller: 'simpleBrandController', templateUrl: 'pages/order.jsp' })
+        .when('/orderEnd', { controller: 'simpleBrandController', templateUrl: 'pages/orderEnd.jsp' })
+        .otherwise( { redirectTo: '/brands' } );
 });
 
 

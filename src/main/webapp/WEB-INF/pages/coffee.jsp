@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page isELIgnored="false" %>
 <!DOCTYPE html>
-<html lang="en" ng-app="todoApp">
+<html lang="en" ng-app="todoApp" ng-clock>
 <head>
   <meta charset="UTF-8">
   <title></title>
@@ -23,15 +23,13 @@
   <!--  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>-->
 </head>
 <body>
-<h1>hello</h1>
-<input type="text" data-ng-model="name">{{name}}
-<input type="text" ng-model="yourName" placeholder="Enter a name here">
-<hr>
-<h1>Hello {{yourName}}!</h1>
-<button class="btn-warning">FFFFFFFFFFFFFFFFF</button>
 <div style="padding:40px 0px 40px 0px">
   <!--  Placeholder for the views  -->
-  <div ng-view></div>
+  <div class="container">
+    <div class="col-md-6 col-md-offset-3">
+      <div ng-view></div>
+    </div>
+  </div>
 </div>
 
 

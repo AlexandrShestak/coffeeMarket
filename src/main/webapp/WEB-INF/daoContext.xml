@@ -2,10 +2,12 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:lang="http://www.springframework.org/schema/lang"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd
          http://www.springframework.org/schema/tx
-        http://www.springframework.org/schema/tx/spring-tx.xsd">
+        http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/lang http://www.springframework.org/schema/lang/spring-lang.xsd">
 
 
     <tx:annotation-driven/>
@@ -16,7 +18,13 @@
     <bean id="hibernateCoffeeBrandDao" class="com.shestakam.coffee.brand.dao.HibernateCoffeeBrandDao">
     </bean>
 
-    <bean id="coffeBrandService" class="com.shestakam.coffee.brand.service.CoffeeBrandServiceImpl"/>
+    <bean id="coffeeBrandService" class="com.shestakam.coffee.brand.service.CoffeeBrandServiceImpl"/>
+
+
+    <lang:groovy id="groovyOrderPriceCalculator"
+                 script-source="classpath:groovy/GroovyOrderPriceCalculator.groovy"
+                 refresh-check-delay="0">
+    </lang:groovy>
 
 
     <bean id="myDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
