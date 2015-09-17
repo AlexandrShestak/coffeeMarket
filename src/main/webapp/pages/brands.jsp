@@ -7,7 +7,8 @@
     <h1>Search:</h1>
     <input type="text" data-ng-model="searchText"/>
     <ul>
-        <li ng-repeat="brand in brands | filter:searchText | orderBy:'name'">
+        <li ng-repeat="brand in brands | orderBy:'name'"
+            ng-bind-html="brand.name | highlight:searchText">
             <input type="checkbox" class="checkCoffee">
             {{brand.name}}
             <input  type="text" hidden="hidden" ng-model="brand.count" ng-init="brand.count = 0" class="countCoffee">

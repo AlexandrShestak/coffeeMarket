@@ -19,6 +19,10 @@
   <script type="text/javascript"  src="${pageContext.servletContext.contextPath}/script/jquery-2.1.4.js"></script>
   <script type="text/javascript"  src="${pageContext.servletContext.contextPath}/script/myJquery.js"></script>
 
+  <style>
+    .highlighted { background: yellow }
+  </style>
+
   <link href="${pageContext.servletContext.contextPath}/bootstrap-3.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
   <!--  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>-->
 </head>
