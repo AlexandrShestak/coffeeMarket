@@ -1,15 +1,20 @@
 package groovy
 
-import com.shestakam.order.entity.OrderPriceCalcilator;
+import com.shestakam.order.entity.OrderPriceCalculator;
 
-class GroovyOrderPriceCalculator implements  OrderPriceCalcilator{
+class GroovyOrderPriceCalculator implements  OrderPriceCalculator{
     String message = "Alexandr1";
 
-    String getMessage() {
-        return message
-    }
+    int n = 5;
+    int m = 2;
+    int x = 10;
 
-    void setMessage(String message) {
-        this.message = message
+
+    @Override
+    int calculatePrice(Collection collection) {
+        var price = 0;
+        collection.each {
+            println("value ${it}")
+        }
     }
 }

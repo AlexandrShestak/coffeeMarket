@@ -2,7 +2,7 @@
 <%@ page isELIgnored="false" %>
 
 
-<div>
+<div ng-controller="simpleBrandController">
   <h1>Контактная информация</h1>
   <table class="table">
     <tr>
@@ -30,7 +30,7 @@
     </tr>
   </table>
 
-
+  {{totalPrice()}}
 
   <%--<ul>
     <li ng-repeat="brand in brands | filter:searchText | orderBy:'name'">

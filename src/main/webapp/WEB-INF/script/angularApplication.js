@@ -7,41 +7,43 @@ myApp.config(['$resourceProvider', function($resourceProvider) {
 
 myApp.factory('brandFactory',function($resource){
     return $resource('/brands/:id');
-   /* return {
-        async: function () {
-            return $http.get('brands.json');  //1. this returns promise
-        }
-    }
-   /!* var factory={};
-    var brandList;
-     $http.get('/brands').success(function(response){
-     brandList = response;
-     })*!/
-     var brandList = [
-     {name:'Arabica'},
-     {name:'Robusta'},
-     {name:'Folgers'},
-     {name:'Nescafe'},
-     {name:'Gevalia'},
-     {name:'Gevalia1111'}
-     ];
-
-    factory.getBrands = function(){
-        $http.get('/brands').then(function(response){
-            var  brandList = response.data;
-            alert('2')
-            alert(brandList[1].name);
-        })
-        $scope.brands = brandList
-        return brandList;
-    };
-    return factory;*/
 });
 
-myApp.controller('simpleBrandController', function($scope,brandFactory) {
-    $scope.brands = brandFactory.query(function() {
-        console.log("tratata");
-    });
+myApp.controller('simpleBrandController', function($scope,$http,brandFactory) {
+
+
+
+    var brands = brandFactory.query(function() {
+        console.log("brands");
+    })
+
+
+    $scope.brands = brands;
+
+    $scope.totalPrice = function(){
+
+        var total = 0;
+
+        angular.forEach()
+        angular.forEach($scope.brands , function(brand){
+            if (brand.check){
+                total+= brand.count;
+            }
+        });
+
+        return total;
+    }
+
+    var dataObj = {"id":1,"name":"Arabica"}
+
+    $scope.postQuery = function(){
+        var res = $http.post('/groovy', dataObj);
+
+        res.success(function(data, status, headers, config) {
+            $scope.message = data;
+        });
+    }
+
 
 });
 
@@ -57,9 +59,10 @@ myApp.filter('highlight', function($sce) {
     return function (text, phrase) {
         if (phrase) text = text.replace(new RegExp('(' + phrase + ')', 'gi'),
             '<span class="highlighted">$1</span>')
-
         return $sce.trustAsHtml(text)
     }
 });
+
+
 
 

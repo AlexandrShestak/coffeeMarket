@@ -21,6 +21,20 @@
 
   <style>
     .highlighted { background: yellow }
+
+    ul.hr {
+      margin: 0; /* Обнуляем значение отступов */
+      padding: 4px; /* Значение полей */
+    }
+    ul.hr li {
+      display: inline; /* Отображать как строчный элемент */
+      margin-right: 5px; /* Отступ слева */
+      border: 1px solid #000; /* Рамка вокруг текста */
+      padding: 3px; /* Поля вокруг текста */
+    }
+
+    [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak { display: none !important; }
+
   </style>
 
   <link href="${pageContext.servletContext.contextPath}/bootstrap-3.3.5/dist/css/bootstrap.min.css" rel="stylesheet">

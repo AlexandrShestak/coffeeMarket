@@ -2,6 +2,7 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:beans="http://www.springframework.org/schema/beans"
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:mvc="http://www.springframework.org/schema/mvc"
        xsi:schemaLocation="
@@ -10,10 +11,31 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd
         http://www.springframework.org/schema/mvc
-        http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd">
+        http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd
+         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 
-    <mvc:annotation-driven />
+
+    <mvc:annotation-driven/>
+
+    <bean id="contentNegotiationManager" class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
+        <!-- Turn off working out content type based on URL file extension, should fall back to looking at the Accept headers -->
+        <property name="favorPathExtension" value="false" />
+    </bean>
+
+
+    <!-- Configure to plugin JSON as request and response in method handler -->
+    <beans:bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+        <beans:property name="messageConverters">
+            <beans:list>
+                <beans:ref bean="jsonMessageConverter"/>
+            </beans:list>
+        </beans:property>
+    </beans:bean>
+
+    <!-- Configure bean to convert JSON to POJO and vice versa -->
+    <beans:bean id="jsonMessageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+    </beans:bean>
 
     <import resource="daoContext.xml"/>
     <context:component-scan base-package="com.shestakam.coffee.brand.controller"/>
@@ -23,6 +45,8 @@
     <mvc:resources mapping="/script/**" location="/WEB-INF/script/"  cache-period="0"/>
     <mvc:resources mapping="/pages/**" location="/WEB-INF/pages/"  cache-period="0"/>
     <mvc:resources mapping="/bootstrap-3.3.5/**" location="/bootstrap-3.3.5/" />
+
+
 
     <bean id="viewResolver"
           class="org.springframework.web.servlet.view.UrlBasedViewResolver">

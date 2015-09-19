@@ -13,7 +13,7 @@
     </tr>
   </table>
 
-    {{brand}}
+    {{brands[1].count}}
 
     <ul>
       <li ng-repeat="brand in brands | filter:searchText | orderBy:'name'">
