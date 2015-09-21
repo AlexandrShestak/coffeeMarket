@@ -1,0 +1,29 @@
+<div ng-controller="simpleBrandController">
+  <h1>Контактная информация</h1>
+  <table class="table">
+    <tr>
+      <td>
+        Введите имя , на которое производится заказ:
+      </td>
+      <td>
+        <input type="text" name="username">
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Введите адрес для доставки:
+      </td>
+      <td>
+        <input type="text" name="address">
+      </td>
+    </tr>
+    <tr >
+      <td colspan="2" align="center">
+        <a href="#orderEnd">
+          <button class="btn-info">Оформить заказ</button>
+        </a>
+      </td>
+    </tr>
+  </table>
+  {{totalPrice()}}
+</div>

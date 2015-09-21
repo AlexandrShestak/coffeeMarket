@@ -21,10 +21,11 @@
     <bean id="coffeeBrandService" class="com.shestakam.coffee.brand.service.CoffeeBrandServiceImpl"/>
 
 
-    <lang:groovy id="groovyOrderPriceCalculator"
+    <lang:groovy id="orderPriceCalculator"
                  script-source="classpath:groovy/GroovyOrderPriceCalculator.groovy"
                  refresh-check-delay="0">
     </lang:groovy>
+    <lang:defaults refresh-check-delay="0"/>
 
     <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
         <property name="messageConverters">

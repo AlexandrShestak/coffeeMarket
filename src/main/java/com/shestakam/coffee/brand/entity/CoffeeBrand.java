@@ -17,6 +17,9 @@ public class CoffeeBrand {
     @Column(name = "name",unique = true, nullable = false, length = 20)
     private String name;
 
+    @Column(name = "price",nullable = false)
+    private Integer price;
+
     public String getName() {
         return name;
     }
@@ -31,5 +34,13 @@ public class CoffeeBrand {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Integer getPrice() {
+        return price;
+    }
+
+    public void setPrice(Integer price) {
+        this.price = price;
     }
 }
