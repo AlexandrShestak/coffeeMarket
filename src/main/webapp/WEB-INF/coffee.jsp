@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page isELIgnored="false" %>
 <!DOCTYPE html>
-<html lang="en" ng-app="todoApp">
+<html lang="en" ng-app="coffeeShopApplication">
 <head>
   <meta charset="UTF-8">
   <title></title>
@@ -20,26 +20,10 @@
   <script type="text/javascript"  src="${pageContext.servletContext.contextPath}/application/application.js"></script>
   <script type="text/javascript"  src="${pageContext.servletContext.contextPath}/application/components/brands/brandService.js"></script>
   <script type="text/javascript"  src="${pageContext.servletContext.contextPath}/application/components/brands/brandController.js"></script>
+  <script type="text/javascript"  src="${pageContext.servletContext.contextPath}/application/components/contactInformation/contactInformationController.js"></script>
   <script type="text/javascript"  src="${pageContext.servletContext.contextPath}/asserts/script/jquery-2.1.4.js"></script>
   <script type="text/javascript"  src="${pageContext.servletContext.contextPath}/asserts/script/myJquery.js"></script>
-
-
-  <style>
-    .highlighted { background: yellow }
-
-    ul.hr {
-      margin: 0; /* Обнуляем значение отступов */
-      padding: 4px; /* Значение полей */
-    }
-    ul.hr li {
-      display: inline; /* Отображать как строчный элемент */
-      margin-right: 5px; /* Отступ слева */
-      border: 1px solid #000; /* Рамка вокруг текста */
-      padding: 3px; /* Поля вокруг текста */
-    }
-
-  </style>
-
+  <link href="${pageContext.servletContext.contextPath}/asserts/css/myCss.css" rel="stylesheet">
   <link href="${pageContext.servletContext.contextPath}/asserts/bootstrap-3.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
   <!--  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>-->
 </head>

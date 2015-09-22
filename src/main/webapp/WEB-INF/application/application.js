@@ -1,19 +1,25 @@
-var myApp = angular.module('todoApp', ['shop']);
+var myApp = angular.module('coffeeShopApplication', ['shop']);
 
-/*
-myApp.config(['$resourceProvider', function($resourceProvider) {
-    // Don't strip trailing slashes from calculated URLs
-    $resourceProvider.defaults.stripTrailingSlashes = false;
-}]);
+//service to pass data from brandController to contactInformationController
+angular.module('coffeeShopApplication').service('orderItemService', function() {
+    var orderItemList = [];
 
-myApp.config(function($routeProvider){
-    $routeProvider
-        .when( '/brands', { controller: 'simpleBrandController', templateUrl: 'application/components/brands/brands.html' } )
-        .when('/order', { controller: 'simpleBrandController', templateUrl: 'application/components/contactInformation/order.html' })
-        .when('/orderEnd', { controller: 'simpleBrandController', templateUrl: 'application/components/orderEnd/orderEnd.html' })
-        .otherwise( { redirectTo: '/brands' } );
+    var addOrderItem = function(newObj) {
+        orderItemList.push(newObj);
+        return 12;
+    };
+
+    var getOrderItems = function(){
+        return orderItemList;
+    };
+
+    return {
+        addOrderItem: addOrderItem,
+        getOrderItems: getOrderItems
+    };
+
 });
-*/
+
 
 myApp.filter('highlight', function($sce) {
     return function (text, phrase) {

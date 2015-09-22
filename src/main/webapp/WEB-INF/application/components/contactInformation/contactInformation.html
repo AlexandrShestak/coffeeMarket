@@ -1,4 +1,4 @@
-<div ng-controller="simpleBrandController">
+<div ng-controller="contactInformationController">
   <h1>Контактная информация</h1>
   <table class="table">
     <tr>
@@ -19,9 +19,15 @@
     </tr>
     <tr >
       <td colspan="2" align="center">
-        <a href="#orderEnd">
-          <button class="btn-info">Оформить заказ</button>
-        </a>
+          <button class="btn-info" ng-click="makeOrder()">Оформить заказ</button>
+      </td>
+    </tr>
+  </table>
+
+  <table class="table">
+    <tr ng-repeat="item in orderItems">
+      <td>
+        {{item}}
       </td>
     </tr>
   </table>

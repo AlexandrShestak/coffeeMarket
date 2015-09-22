@@ -1,8 +1,7 @@
 /**
  * Created by shestakam on 21.9.15.
  */
-angular.module('todoApp').controller('simpleBrandController', function($scope,$http,$location,brandFactory) {
-
+angular.module('coffeeShopApplication').controller('simpleBrandController', function($scope,$http,$location,brandFactory,orderItemService) {
     var brands = brandFactory.query(function() {
         console.log("brands");
     })
@@ -27,8 +26,11 @@ angular.module('todoApp').controller('simpleBrandController', function($scope,$h
         angular.forEach($scope.brands , function(brand){
             if (brand.check){
                 delete brand.check
-                brand = brand.replace("\"name\":", "\"brand\":");
+                var brandItemJson = JSON.stringify(brand)
+                brandItemJson = brandItemJson.replace("\"name\":", "\"brand\":");
+                brand = JSON.parse(brandItemJson);
                 dataObj.push(brand)
+                orderItemService.addOrderItem(brand)
             }
         });
 

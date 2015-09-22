@@ -18,12 +18,12 @@ public class OrderItem {
         this.id = id;
     }
 
-    public String getName() {
+    public String getBrand() {
         return brand;
     }
 
-    public void setName(String name) {
-        this.brand = name;
+    public void setBrand(String brand) {
+        this.brand = brand;
     }
 
     public int getPrice() {
