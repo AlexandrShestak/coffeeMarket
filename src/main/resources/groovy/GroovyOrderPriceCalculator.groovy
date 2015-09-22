@@ -1,7 +1,7 @@
 package groovy
 
 import com.shestakam.order.OrderPriceCalculator
-import com.shestakam.order.orderItem.OrderItem;
+import com.shestakam.order.orderItem.entity.OrderItem;
 
 class GroovyOrderPriceCalculator implements  OrderPriceCalculator{
     String message = "Alexandr1";
@@ -14,7 +14,6 @@ class GroovyOrderPriceCalculator implements  OrderPriceCalculator{
     int calculatePrice(List<OrderItem> collection) {
         def price = 0
         collection.each {
-
             def free = Math.ceil((it.count / n))
             price += (it.count - free) * it.price
         }

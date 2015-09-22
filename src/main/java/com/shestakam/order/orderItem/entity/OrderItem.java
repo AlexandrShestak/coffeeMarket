@@ -1,12 +1,28 @@
-package com.shestakam.order.orderItem;
+package com.shestakam.order.orderItem.entity;
+
+import javax.persistence.Entity;
+import javax.persistence.*;
+
 
 /**
  * Created by shestakam on 20.9.15.
  */
+@Entity
+@Table(name = "order_item" ,catalog = "coffeeMarket")
 public class OrderItem {
+
+    @Id
+    @GeneratedValue
+    @Column(name = "id")
     private Long id;
+
+    @Column(name = "brand",nullable = false, length = 20)
     private String brand;
+
+    @Column(name = "price",nullable = false)
     private  int price;
+
+    @Column(name = "count",nullable = false)
     private int count;
 
 

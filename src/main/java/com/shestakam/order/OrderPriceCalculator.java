@@ -1,6 +1,6 @@
 package com.shestakam.order;
 
-import com.shestakam.order.orderItem.OrderItem;
+import com.shestakam.order.orderItem.entity.OrderItem;
 
 import java.util.List;
 

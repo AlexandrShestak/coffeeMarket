@@ -6,7 +6,7 @@
         Введите имя , на которое производится заказ:
       </td>
       <td>
-        <input type="text" name="username">
+        <input type="text" name="username" ng-model="user.username">
       </td>
     </tr>
     <tr>
@@ -14,15 +14,17 @@
         Введите адрес для доставки:
       </td>
       <td>
-        <input type="text" name="address">
+        <input type="text" name="address" ng-model="user.address">
       </td>
     </tr>
     <tr >
       <td colspan="2" align="center">
-          <button class="btn-info" ng-click="makeOrder()">Оформить заказ</button>
+          <button class="btn-info" ng-click="makeOrder() ">Оформить заказ</button>
       </td>
     </tr>
   </table>
+
+  {{user}}
 
   <table class="table">
     <tr ng-repeat="item in orderItems">

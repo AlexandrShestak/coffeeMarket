@@ -54,6 +54,7 @@
         <property name="annotatedClasses">
             <list>
                 <value>com.shestakam.coffee.brand.entity.CoffeeBrand</value>
+                <value>com.shestakam.order.orderItem.entity.OrderItem</value>
             </list>
         </property>
         <property name="hibernateProperties">

@@ -5,7 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.shestakam.coffee.brand.entity.CoffeeBrand;
 import com.shestakam.coffee.brand.service.CoffeeBrandService;
 import com.shestakam.order.OrderPriceCalculator;
-import com.shestakam.order.orderItem.OrderItem;
+import com.shestakam.order.orderItem.entity.OrderItem;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
