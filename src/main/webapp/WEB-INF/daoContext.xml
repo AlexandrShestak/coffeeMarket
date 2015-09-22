@@ -21,6 +21,9 @@
     <bean id="hibernateOrderItemDao" class="com.shestakam.order.orderItem.dao.HibernateOrderItemDao">
     </bean>
 
+    <bean id="hibernateOrderDao" class="com.shestakam.order.dao.HibernateOrderDao">
+    </bean>
+
     <bean id="coffeeBrandService" class="com.shestakam.coffee.brand.service.CoffeeBrandServiceImpl"/>
 
 
