@@ -6,24 +6,20 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
 
-    <changeSet id="add order item table" author="alexandr">
-        <createTable tableName="order_item">
+    <changeSet id="add order table" author="alexandr">
+        <createTable tableName="user_order">
             <column name="id" type="int" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false" unique="true"/>
             </column>
-            <column name="brand" type="varchar(20)">
+            <column name="username" type="varchar(40)">
                 <constraints nullable="false"/>
             </column>
-            <column name="count" type="int">
-                <constraints nullable="false"/>
-            </column>
-            <column name="price" type="int">
-                <constraints nullable="false"/>
-            </column>
-            <column name="order_id" type="int">
+            <column name="address" type="varchar(50)">
                 <constraints nullable="false"/>
             </column>
         </createTable>
+
+
     </changeSet>
 
 </databaseChangeLog>

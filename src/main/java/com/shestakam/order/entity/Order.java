@@ -2,8 +2,7 @@ package com.shestakam.order.entity;
 
 import com.shestakam.order.orderItem.entity.OrderItem;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -11,12 +10,22 @@ import java.util.Set;
  * Created by shestakam on 16.9.15.
  */
 @Entity
-@Table(name = "order" ,catalog = "coffeeMarket")
+@Table(name = "user_order" ,catalog = "coffeeMarket")
 public class Order {
 
+
+    @Id
+    @GeneratedValue
+    @Column(name = "id")
     private Long id;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "order")
     private Set<OrderItem> orderItemSet = new HashSet<>(0);
+
+    @Column(name = "username",nullable = false,length = 40)
     private String username;
+
+    @Column(name = "address",nullable = false,length = 50)
     private String address;
 
     public Long getId() {

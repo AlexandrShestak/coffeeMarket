@@ -1,5 +1,7 @@
 package com.shestakam.order.orderItem.entity;
 
+import com.shestakam.order.entity.Order;
+
 import javax.persistence.Entity;
 import javax.persistence.*;
 
@@ -24,6 +26,10 @@ public class OrderItem {
 
     @Column(name = "count",nullable = false)
     private int count;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "order_id", nullable = false)
+    private Order order;
 
 
     public Long getId() {
@@ -58,5 +64,11 @@ public class OrderItem {
         this.count = count;
     }
 
+    public Order getOrder() {
+        return order;
+    }
 
+    public void setOrder(Order order) {
+        this.order = order;
+    }
 }

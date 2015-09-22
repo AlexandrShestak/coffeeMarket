@@ -61,6 +61,7 @@
             <list>
                 <value>com.shestakam.coffee.brand.entity.CoffeeBrand</value>
                 <value>com.shestakam.order.orderItem.entity.OrderItem</value>
+                <value>com.shestakam.order.entity.Order</value>
             </list>
         </property>
         <property name="hibernateProperties">
