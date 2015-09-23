@@ -52,7 +52,7 @@ public class BrandController {
   /*  @RequestMapping(value = "/groovy",method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public String returnGroovyMessage(@ModelAttribute String str){
         return "tratatat";
-        //return orderPriceCalcilator.calculatePrice(collection);
+        //return orderPriceCalcilator.calculatePriceg(collection);
     }*/
 
     @RequestMapping(value = "/calculatePrice",method = RequestMethod.POST ,consumes = MediaType.APPLICATION_JSON_VALUE )
