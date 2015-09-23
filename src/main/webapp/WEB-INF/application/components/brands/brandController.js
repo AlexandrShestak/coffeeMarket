@@ -39,11 +39,18 @@ angular.module('coffeeShopApplication').controller('simpleBrandController', func
                 brand = JSON.parse(brandItemJson);*/
                 dataObj.push(orderItem);
                 orderItemService.addOrderItem(orderItem);
-                orderItemService.saveTotalPrice(price);
             }
         });
         var res = $http.post('/calculatePrice', dataObj);
-        $location.path('/order')
+        var total = 0;
+        res.success(function(data, status, headers, config) {
+            total = data;
+            orderItemService.saveTotalPrice(total);
+            $location.path('/order')
+        });
+
+
+
     }
 });
 

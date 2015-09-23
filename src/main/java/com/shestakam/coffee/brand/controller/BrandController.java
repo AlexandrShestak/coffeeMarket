@@ -69,6 +69,7 @@ public class BrandController {
             priceCount.setCount(elem.getCount());
             priceCountList.add(priceCount);
         }
+       /* return "[{\"count\":1,\"brandId\":1}]";*/
         return orderPriceCalculator.calculatePrice(priceCountList);
     }
 

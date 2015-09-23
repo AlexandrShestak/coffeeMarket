@@ -62,4 +62,12 @@ public class Order {
     public void setAddress(String address) {
         this.address = address;
     }
+
+    public Integer getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(Integer totalPrice) {
+        this.totalPrice = totalPrice;
+    }
 }

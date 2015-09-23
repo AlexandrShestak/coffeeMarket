@@ -11,7 +11,7 @@ class GroovyOrderPriceCalculator implements  OrderPriceCalculator{
     int x = 10
 
     @Override
-    int calculatePrice(List<OrderItem> collection) {
+    int calculatePrice(List collection) {
         def price = 0
         collection.each {
             def free = Math.ceil((it.count / n))

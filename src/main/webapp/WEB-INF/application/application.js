@@ -13,7 +13,7 @@ angular.module('coffeeShopApplication').service('orderItemService', function() {
         return totalPrice;
     }
     var deleteOrderItems = function(){
-        orderItemList.removeAll()
+        orderItemList = [];
     }
 
     var addOrderItem = function(newObj) {

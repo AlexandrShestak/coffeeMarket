@@ -1,6 +1,6 @@
 <div  ng-controller="simpleBrandController" ng-cloak>
 
-    <h1>Поиск:</h1>    <input type="text" data-ng-model="searchText"/>
+    <h1>Поиск: <input type="text" data-ng-model="searchText"/></h1>
 <!--    <h2>Цена заказа :</h2>  {{totalPrice()}}-->
     <table class="table">
         <tr ng-repeat="brand in brands | orderBy:'name'">

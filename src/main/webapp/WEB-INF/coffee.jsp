@@ -35,8 +35,6 @@
       <div ng-view></div>
     </div>
   </div>
-  <input type="text" ng-model="hello"/>
-  {{hello}}
 </div>
 
 
