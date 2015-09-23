@@ -1,6 +1,10 @@
 package com.shestakam.coffee.brand.entity;
 
+import com.shestakam.order.orderItem.entity.OrderItem;
+
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by shestakam on 8.9.15.
@@ -19,6 +23,9 @@ public class CoffeeBrand {
 
     @Column(name = "price",nullable = false)
     private Integer price;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "brand")
+    private Set<OrderItem> orderItemSet = new HashSet<>(0);
 
     public String getName() {
         return name;

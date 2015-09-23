@@ -7,12 +7,14 @@ import org.apache.logging.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 /**
  * Created by shestakam on 22.9.15.
  */
+@Transactional
 public class HibernateOrderDao implements OrderDao {
 
     private final static Logger logger = LogManager.getLogger(HibernateOrderDao.class);
@@ -61,5 +63,17 @@ public class HibernateOrderDao implements OrderDao {
         logger.debug("update order  with id : " + order.getId());
         Session session = sessionFactory.getCurrentSession();
         session.update(order);
+    }
+
+    @Override
+    public void saveOrderWithOrderItems(Order order) {
+        logger.debug("save order with order items ");
+        Session session = sessionFactory.getCurrentSession();
+        session.save(order);
+        for (OrderItem elem : order.getOrderItemSet()){
+            elem.setOrderId(order.getId());
+            session.save(elem);
+        }
+
     }
 }

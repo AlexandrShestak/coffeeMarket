@@ -28,6 +28,9 @@ public class Order {
     @Column(name = "address",nullable = false,length = 50)
     private String address;
 
+    @Column(name = "total_price")
+    private Integer totalPrice;
+
     public Long getId() {
         return id;
     }

@@ -7,4 +7,5 @@ import com.shestakam.order.entity.Order;
  * Created by shestakam on 22.9.15.
  */
 public interface OrderDao extends GenericDao<Order> {
+    void saveOrderWithOrderItems(Order order);
 }

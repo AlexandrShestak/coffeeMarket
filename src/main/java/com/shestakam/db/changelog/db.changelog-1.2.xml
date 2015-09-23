@@ -17,6 +17,8 @@
             <column name="address" type="varchar(50)">
                 <constraints nullable="false"/>
             </column>
+            <column name="total_price" type="int">
+            </column>
         </createTable>
 
 

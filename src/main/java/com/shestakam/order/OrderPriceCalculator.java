@@ -9,6 +9,6 @@ import java.util.List;
  */
 public interface OrderPriceCalculator {
 
-    int calculatePrice(List<OrderItem> collection);
+    int calculatePrice(List collection);
 
 }

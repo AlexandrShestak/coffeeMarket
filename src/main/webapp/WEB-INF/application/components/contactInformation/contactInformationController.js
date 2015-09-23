@@ -9,13 +9,13 @@ angular.module('coffeeShopApplication').controller('contactInformationController
         /* var dataObj = [{"id":1,"name":"Arabica"},{"id":2,"name":"Robusta"},{"id":3,"name":"Folgers"},{"id":6,"name":"tratatta"}]
          */
 
-        var dataObj = new Array();
-        angular.forEach($scope.orderItems , function(orderItem){
+        var dataObj = {};
+        dataObj.orderItemSet = $scope.orderItems;
+        dataObj.username = $scope.user.username;
+        dataObj.address = $scope.user.address;
+        dataObj.totalPrice = orderItemServicer.getTotalPrice();
 
-            dataObj.push(orderItem);
-        });
-
-        var res = $http.post('/groovy', dataObj);
+        var res = $http.post('/makeOrder', dataObj);
 
         var total = 0;
 

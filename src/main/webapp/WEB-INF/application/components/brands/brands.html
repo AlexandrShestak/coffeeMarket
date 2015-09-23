@@ -1,7 +1,7 @@
 <div  ng-controller="simpleBrandController" ng-cloak>
 
-    <h1>Search:</h1>
-    <input type="text" data-ng-model="searchText"/>
+    <h1>Поиск:</h1>    <input type="text" data-ng-model="searchText"/>
+<!--    <h2>Цена заказа :</h2>  {{totalPrice()}}-->
     <table class="table">
         <tr ng-repeat="brand in brands | orderBy:'name'">
             <td>
@@ -20,15 +20,8 @@
         </tr>
     </table>
 
-    {{totalPrice()}}
-
-
     <button class="btn-warning" ng-click="postQuery()">Post query</button>
-    <a href="#order">
-        <button class="alert-link" >Сделать заказ</button>
-    </a>
 
-    {{message}}
 
 
 </div>

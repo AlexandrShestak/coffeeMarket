@@ -14,6 +14,11 @@ public class CoffeeController {
         return "coffee";
     }
 
+    @RequestMapping(value = "/")
+    public String returnStartPage(){
+        return "coffee";
+    }
+
 
 
 

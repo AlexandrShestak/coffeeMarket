@@ -3,10 +3,21 @@ var myApp = angular.module('coffeeShopApplication', ['shop']);
 //service to pass data from brandController to contactInformationController
 angular.module('coffeeShopApplication').service('orderItemService', function() {
     var orderItemList = [];
+    var totalPrice = 0;
+
+    var saveTotalPrice = function(newObj){
+        totalPrice = newObj
+    };
+
+    var getTotalPrice = function(){
+        return totalPrice;
+    }
+    var deleteOrderItems = function(){
+        orderItemList.removeAll()
+    }
 
     var addOrderItem = function(newObj) {
         orderItemList.push(newObj);
-        return 12;
     };
 
     var getOrderItems = function(){
@@ -15,7 +26,11 @@ angular.module('coffeeShopApplication').service('orderItemService', function() {
 
     return {
         addOrderItem: addOrderItem,
-        getOrderItems: getOrderItems
+        getOrderItems: getOrderItems,
+        deleteOrderItems: deleteOrderItems,
+        saveTotalPrice: saveTotalPrice,
+        getTotalPrice: getTotalPrice
+
     };
 
 });

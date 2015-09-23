@@ -3,45 +3,47 @@
  */
 angular.module('coffeeShopApplication').controller('simpleBrandController', function($scope,$http,$location,brandFactory,orderItemService) {
     var brands = brandFactory.query(function() {
-        console.log("brands");
+        console.log("get brands(ajax)");
     })
     $scope.brands = brands;
-    $scope.totalPrice = function(){
-
-        var total = 0;
-
-        angular.forEach($scope.brands , function(brand){
-            if (brand.check){
-                total+= brand.count;
-            }
-        });
-
-        return total;
-    }
-    $scope.postQuery = function(){
-        /* var dataObj = [{"id":1,"name":"Arabica"},{"id":2,"name":"Robusta"},{"id":3,"name":"Folgers"},{"id":6,"name":"tratatta"}]
-         */
-
+    /*$scope.totalPrice = function(){
         var dataObj = new Array();
         angular.forEach($scope.brands , function(brand){
             if (brand.check){
-                delete brand.check
-                var brandItemJson = JSON.stringify(brand)
-                brandItemJson = brandItemJson.replace("\"name\":", "\"brand\":");
-                brand = JSON.parse(brandItemJson);
-                dataObj.push(brand)
-                orderItemService.addOrderItem(brand)
+                var orderItem = {};
+                orderItem.count = brand.count;
+                orderItem.brandId = brand.id;
+                dataObj.push(orderItem);
             }
         });
-
-        var res = $http.post('/groovy', dataObj);
-
+        var res = $http.post('/calculatePrice', dataObj);
         var total = 0;
-
         res.success(function(data, status, headers, config) {
-            $scope.message = data;
+            total = data;
         });
-       /* $location.path('/order')*/
+        $scope.price = total;
+        return total;
+    }*/
+    $scope.postQuery = function(){
+
+        orderItemService.deleteOrderItems();
+        var dataObj = new Array();
+        angular.forEach($scope.brands , function(brand){
+            if (brand.check){
+                var orderItem = {};
+                orderItem.count = brand.count;
+                orderItem.brandId = brand.id;
+              /*  delete brand.check
+                var brandItemJson = JSON.stringify(brand)
+                brandItemJson = brandItemJson.replace("\"name\":", "\"brand\":");
+                brand = JSON.parse(brandItemJson);*/
+                dataObj.push(orderItem);
+                orderItemService.addOrderItem(orderItem);
+                orderItemService.saveTotalPrice(price);
+            }
+        });
+        var res = $http.post('/calculatePrice', dataObj);
+        $location.path('/order')
     }
 });
 

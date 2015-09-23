@@ -1,6 +1,8 @@
 package com.shestakam.order.orderItem.entity;
 
+import com.shestakam.coffee.brand.entity.CoffeeBrand;
 import com.shestakam.order.entity.Order;
+import org.codehaus.jackson.annotate.JsonIgnore;
 
 import javax.persistence.Entity;
 import javax.persistence.*;
@@ -16,21 +18,34 @@ public class OrderItem {
     @Id
     @GeneratedValue
     @Column(name = "id")
+    @JsonIgnore
     private Long id;
 
-    @Column(name = "brand",nullable = false, length = 20)
+   /* @Column(name = "brand",nullable = false, length = 20)
     private String brand;
 
     @Column(name = "price",nullable = false)
-    private  int price;
+    private  int price;*/
+
+    @Column(name = "brand_id",nullable = false)
+    private Long brandId;
+
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "brand_id", nullable = false , insertable = false , updatable = false)
+    @JsonIgnore
+    private CoffeeBrand brand;
 
     @Column(name = "count",nullable = false)
     private int count;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "order_id", nullable = false)
-    private Order order;
+    @Column(name = "order_id",nullable = false)
+    private Long orderId;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "order_id", nullable = false , insertable = false , updatable = false)
+    @JsonIgnore
+    private Order order;
 
     public Long getId() {
         return id;
@@ -40,20 +55,12 @@ public class OrderItem {
         this.id = id;
     }
 
-    public String getBrand() {
+    public CoffeeBrand getBrand() {
         return brand;
     }
 
-    public void setBrand(String brand) {
+    public void setBrand(CoffeeBrand brand) {
         this.brand = brand;
-    }
-
-    public int getPrice() {
-        return price;
-    }
-
-    public void setPrice(int price) {
-        this.price = price;
     }
 
     public int getCount() {
@@ -64,11 +71,27 @@ public class OrderItem {
         this.count = count;
     }
 
+    public Long getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(Long orderId) {
+        this.orderId = orderId;
+    }
+
     public Order getOrder() {
         return order;
     }
 
     public void setOrder(Order order) {
         this.order = order;
+    }
+
+    public Long getBrandId() {
+        return brandId;
+    }
+
+    public void setBrandId(Long brandId) {
+        this.brandId = brandId;
     }
 }
