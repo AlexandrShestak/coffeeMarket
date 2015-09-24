@@ -14,7 +14,7 @@ class GroovyOrderPriceCalculator implements  OrderPriceCalculator{
     int calculatePrice(List collection) {
         def price = 0
         collection.each {
-            def free = Math.ceil((it.count / n))
+            def free = Math.floor((it.count / n))
             price += (it.count - free) * it.price
         }
 

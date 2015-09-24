@@ -1,0 +1,48 @@
+<form class="form-horizontal col-md-6 col-md-offset-4" action="/registration" method="POST">
+    <fieldset>
+        <div id="legend">
+            <legend class=""> Регистрация </legend>
+        </div>
+        <div class="control-group">
+            <!-- Username -->
+            <label class="control-label"  for="username"> Введите логин :</label>
+            <div class="controls">
+                <input type="text" id="username" name="username"  class="input-xlarge">
+                <p class="help-block">Username can contain any letters or numbers, without spaces</p>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <!-- E-mail -->
+            <label class="control-label" for="email">  Введите адрес электронной почты :</label>
+            <div class="controls">
+                <input type="email" id="email" name="email" class="input-xlarge">
+                <p class="help-block">Please provide your E-mail</p>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <!-- Password-->
+            <label class="control-label" for="password"> Введите пароль</label>
+            <div class="controls">
+                <input type="hidden" name="action" value="registration">
+                <input type="password" id="password" name="password" placeholder="" class="input-xlarge">
+                <p class="help-block">Password should be at least 4 characters</p>
+            </div>
+        </div>
+
+       <!-- <c:if test="${not empty errorMessage}">
+            <div class="control-group">
+                <div class="alert alert-warning" role="alert">${errorMessage}</div>
+            </div>
+        </c:if>
+-->
+        <div class="control-group">
+            <!-- Button -->
+            <div class="controls">
+                <button class="btn btn-success"> Зарегистрировать </button>
+            </div>
+        </div>
+    </fieldset>
+</form>
+

@@ -21,12 +21,6 @@ public class OrderItem {
     @JsonIgnore
     private Long id;
 
-   /* @Column(name = "brand",nullable = false, length = 20)
-    private String brand;
-
-    @Column(name = "price",nullable = false)
-    private  int price;*/
-
     @Column(name = "brand_id",nullable = false)
     private Long brandId;
 

@@ -1,0 +1,39 @@
+<div  ng-controller="loginController">
+    <form class="form-signin" ng-submit="login()">
+        <table class="table">
+            <tr>
+
+                <td> Введите логин : </td>
+                <td><input  id="inputLogin" type="text" name="username"
+                            class="form-control" ng-model="credentials.username"> </td>
+            </tr>
+
+            <tr>
+                <td> Введите пароль :  </td>
+                <td><input type="password" name="password" id="inputPassword" class="form-control"  required
+                           ng-model="credentials.password"> </td>
+            </tr>
+
+            <tr>
+                <td colspan="2" align="center">
+                    <button type="submit" name="action"  class="btn btn-lg btn-primary btn-block" type="submit"> Войти </button>
+                </td>
+            </tr>
+        </table>
+    </form>
+
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+            <form action="registration">
+                <table class="table">
+                    <tr>
+                        <td> Или зарегистрируйтесь сейчас </td>
+                        <td>
+                            <button type="submit" name="action" value="registration" class="btn btn-warning"> Регистрация </button>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+</div>

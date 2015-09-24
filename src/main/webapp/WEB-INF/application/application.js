@@ -1,4 +1,8 @@
-var myApp = angular.module('coffeeShopApplication', ['shop']);
+var myApp = angular.module('coffeeShopApplication', ['shop']).config(function($httpProvider) {
+
+    $httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
+
+});
 
 //service to pass data from brandController to contactInformationController
 angular.module('coffeeShopApplication').service('orderItemService', function() {

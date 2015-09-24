@@ -14,7 +14,7 @@
            <!-- <column name="brand" type="varchar(20)">
                 <constraints nullable="false"/>
             </column>-->
-            <column name="count" type="int">
+            <column name="amount" type="int">
                 <constraints nullable="false"/>
             </column>
             <column name="brand_id" type="int">

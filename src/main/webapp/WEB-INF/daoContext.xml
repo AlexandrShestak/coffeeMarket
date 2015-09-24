@@ -24,7 +24,11 @@
     <bean id="hibernateOrderDao" class="com.shestakam.order.dao.HibernateOrderDao">
     </bean>
 
-    <bean id="coffeeBrandService" class="com.shestakam.coffee.brand.service.CoffeeBrandServiceImpl"/>
+    <bean id="jdbcCoffeeBrandDao" class="com.shestakam.coffee.brand.dao.JdbcCoffeeBrandDao"></bean>
+
+    <bean id="coffeeBrandService" class="com.shestakam.coffee.brand.service.CoffeeBrandServiceImpl">
+        <property name="coffeeBrandDao" ref="hibernateCoffeeBrandDao"/>
+    </bean>
 
 
     <lang:groovy id="orderPriceCalculator"
@@ -62,6 +66,8 @@
                 <value>com.shestakam.coffee.brand.entity.CoffeeBrand</value>
                 <value>com.shestakam.order.orderItem.entity.OrderItem</value>
                 <value>com.shestakam.order.entity.Order</value>
+                <value>com.shestakam.user.entity.Role</value>
+                <value>com.shestakam.user.entity.User</value>
             </list>
         </property>
         <property name="hibernateProperties">
@@ -69,6 +75,15 @@
                 hibernate.dialect=org.hibernate.dialect.HSQLDialect
             </value>
         </property>
+    </bean>
+
+
+    <bean id="hibernateUsersDao" class="com.shestakam.user.dao.HibernateUserDao">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <bean class="com.shestakam.user.authorization.MyUserDetailsService" id="myUserDetailsService">
+        <property name="userDao" ref="hibernateUsersDao"/>
     </bean>
 
 

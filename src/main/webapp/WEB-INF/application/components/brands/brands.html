@@ -1,4 +1,4 @@
-<div  ng-controller="simpleBrandController" ng-cloak>
+<div  ng-controller="simpleBrandController" >
 
     <h1>Поиск: <input type="text" data-ng-model="searchText"/></h1>
 <!--    <h2>Цена заказа :</h2>  {{totalPrice()}}-->
@@ -11,7 +11,7 @@
                 <p ng-bind-html="brand.name  | highlight:searchText"></p>
             </td>
             <td>
-            <input  type="number" ng-show="brand.check" ng-model="brand.count" ng-init="brand.count = 1" class="countCoffee">
+            <input  type="number" min="1" ng-show="brand.check" ng-model="brand.count" ng-init="brand.count = 1" class="countCoffee">
             </td>
             <td>
                 {{brand}}

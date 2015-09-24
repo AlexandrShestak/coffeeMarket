@@ -6,24 +6,7 @@ angular.module('coffeeShopApplication').controller('simpleBrandController', func
         console.log("get brands(ajax)");
     })
     $scope.brands = brands;
-    /*$scope.totalPrice = function(){
-        var dataObj = new Array();
-        angular.forEach($scope.brands , function(brand){
-            if (brand.check){
-                var orderItem = {};
-                orderItem.count = brand.count;
-                orderItem.brandId = brand.id;
-                dataObj.push(orderItem);
-            }
-        });
-        var res = $http.post('/calculatePrice', dataObj);
-        var total = 0;
-        res.success(function(data, status, headers, config) {
-            total = data;
-        });
-        $scope.price = total;
-        return total;
-    }*/
+
     $scope.postQuery = function(){
 
         orderItemService.deleteOrderItems();
@@ -31,7 +14,7 @@ angular.module('coffeeShopApplication').controller('simpleBrandController', func
         angular.forEach($scope.brands , function(brand){
             if (brand.check){
                 var orderItem = {};
-                orderItem.count = brand.count;
+                orderItem.amount = brand.count;
                 orderItem.brandId = brand.id;
               /*  delete brand.check
                 var brandItemJson = JSON.stringify(brand)
@@ -48,9 +31,6 @@ angular.module('coffeeShopApplication').controller('simpleBrandController', func
             orderItemService.saveTotalPrice(total);
             $location.path('/order')
         });
-
-
-
     }
 });
 
