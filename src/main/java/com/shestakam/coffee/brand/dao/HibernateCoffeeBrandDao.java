@@ -13,6 +13,10 @@ import java.util.List;
 /**
  * Created by shestakam on 8.9.15.
  */
+
+/**
+  hibernate dao class for CoffeeBrand entity
+ */
 @Repository
 public class HibernateCoffeeBrandDao implements CoffeeBrandDao {
 
@@ -24,6 +28,11 @@ public class HibernateCoffeeBrandDao implements CoffeeBrandDao {
         this.sessionFactory = sessionFactory;
     }
 
+    /**
+     * save coffeeBrand entity in database
+     * @param coffeeBrand entity which will be save
+     * @return id of new entity
+     */
     public Long save(CoffeeBrand coffeeBrand) {
         logger.debug("add coffee brand");
         Session session = sessionFactory.getCurrentSession();
@@ -31,6 +40,11 @@ public class HibernateCoffeeBrandDao implements CoffeeBrandDao {
         return coffeeBrand.getId();
     }
 
+    /**
+     * get coffeeBrand entity from database
+     * @param id of entity which will be load
+     * @return loaded CoffeeBrand entity
+     */
     public CoffeeBrand get(Long id) {
         logger.debug("get coffee brand with id : "+id);
         Session session = sessionFactory.getCurrentSession();
@@ -38,6 +52,10 @@ public class HibernateCoffeeBrandDao implements CoffeeBrandDao {
         return brand;
     }
 
+    /**
+     * method to load all coffee  brands entities from database
+     * @return all coffee  brands entities from database
+     */
     public List<CoffeeBrand> getAll() {
         logger.debug("get all coffee brands");
         Session session = sessionFactory.getCurrentSession();
@@ -45,6 +63,10 @@ public class HibernateCoffeeBrandDao implements CoffeeBrandDao {
         return result;
     }
 
+    /**
+     * delete coffeeBrand entity by id
+     * @param id of entity which will be deleted
+     */
     public void delete(Long id) {
         logger.debug("delete coffee brand with id : "+id);
         Session session = sessionFactory.getCurrentSession();
@@ -52,6 +74,11 @@ public class HibernateCoffeeBrandDao implements CoffeeBrandDao {
         session.delete(brand);
     }
 
+
+    /**
+     * update existing coffeeBrand entity in database
+     * @param coffeeBrand updated entity which will replace existing entity with same id
+     */
     public void update(CoffeeBrand coffeeBrand) {
         logger.debug("update coffee brand with id : " +coffeeBrand.getId());
         Session session = sessionFactory.getCurrentSession();

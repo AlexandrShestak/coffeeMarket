@@ -2,10 +2,12 @@
  * Created by shestakam on 21.9.15.
  */
 angular.module('coffeeShopApplication').controller('simpleBrandController', function($scope,$http,$location,brandFactory,orderItemService) {
-    var brands = brandFactory.query(function() {
+    /*var brands = brandFactory.query(function() {
+        console.log("get brands(ajax)");
+    })*/
+    $scope.brands = brandFactory.query(function() {
         console.log("get brands(ajax)");
     })
-    $scope.brands = brands;
 
     $scope.postQuery = function(){
 

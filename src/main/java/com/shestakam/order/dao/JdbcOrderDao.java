@@ -2,7 +2,6 @@ package com.shestakam.order.dao;
 
 import com.shestakam.order.entity.Order;
 
-import com.shestakam.coffee.brand.entity.CoffeeBrand;
 import com.shestakam.order.orderItem.entity.OrderItem;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -131,11 +130,11 @@ public class JdbcOrderDao implements OrderDao {
         try(Connection connection = JdbcConnection.getConnection();
             PreparedStatement preparedStatement =
                     connection.prepareStatement("insert into user_order (address, total_price, username)" +
-                                    "values (null, ?, ?, ?)",
+                                    "values (?, ?, ?)",
                             Statement.RETURN_GENERATED_KEYS);
             PreparedStatement psToAddItems =
                     connection.prepareStatement("insert into order_item (amount, brand_id, order_id) " +
-                            "values (null, ?, ?, ?)")) {
+                            "values (?, ?, ?)")) {
             preparedStatement.setString(1, order.getUsername());
             preparedStatement.setString(2, order.getAddress());
             preparedStatement.setInt(3,order.getTotalPrice());
@@ -145,7 +144,7 @@ public class JdbcOrderDao implements OrderDao {
             key = keys.getInt(1);
             for (OrderItem elem : order.getOrderItemSet()){
                 elem.setOrderId(order.getId());
-                psToAddItems.setInt(1, elem.getCount());
+                psToAddItems.setInt(1, elem.getAmount());
                 psToAddItems.setLong(2, elem.getBrandId());
                 psToAddItems.setLong(3, key);
                 psToAddItems.executeUpdate();

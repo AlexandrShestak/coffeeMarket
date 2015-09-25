@@ -19,10 +19,10 @@ import java.util.List;
 /**
  * Created by shestakam on 24.9.15.
  */
-@Repository
+/*@Repository*/
 public class JdbcCoffeeBrandDao implements CoffeeBrandDao {
 
-    private final static Logger logger = LogManager.getLogger(HibernateCoffeeBrandDao.class);
+    private final static Logger logger = LogManager.getLogger(JdbcCoffeeBrandDao.class);
 
     @Override
     public Long save(CoffeeBrand coffeeBrand) {
@@ -70,8 +70,9 @@ public class JdbcCoffeeBrandDao implements CoffeeBrandDao {
     @Override
     public List<CoffeeBrand> getAll() {
         List<CoffeeBrand> brandList = new ArrayList<>();
+
         try (Connection connection = JdbcConnection.getConnection();
-             Statement statement = connection.createStatement()){
+            Statement statement = connection.createStatement()){
             ResultSet rs = statement.executeQuery("select * from coffee_brand");
             while (rs.next()) {
                 CoffeeBrand brand = new CoffeeBrand();
@@ -80,11 +81,11 @@ public class JdbcCoffeeBrandDao implements CoffeeBrandDao {
                 brand.setId(rs.getLong("id"));
                 brandList.add(brand);
             }
+            logger.debug("get all coffee brands");
         } catch (SQLException e) {
             e.printStackTrace();
             logger.error("get all coffee brands error",e);
         }
-        logger.debug("get all coffee brands");
         return brandList;
     }
 
@@ -104,6 +105,7 @@ public class JdbcCoffeeBrandDao implements CoffeeBrandDao {
 
     @Override
     public void update(CoffeeBrand coffeeBrand) {
+
         try(Connection connection = JdbcConnection.getConnection();
             PreparedStatement preparedStatement =
                     connection.prepareStatement("update coffee_brand set name=?,price=? where id=?")){

@@ -1,7 +1,6 @@
 package groovy
 
 import com.shestakam.order.OrderPriceCalculator
-import com.shestakam.order.orderItem.entity.OrderItem;
 
 class GroovyOrderPriceCalculator implements  OrderPriceCalculator{
     String message = "Alexandr1";

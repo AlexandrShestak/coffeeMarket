@@ -30,8 +30,8 @@ public class OrderItem {
     @JsonIgnore
     private CoffeeBrand brand;
 
-    @Column(name = "count",nullable = false)
-    private int count;
+    @Column(name = "amount",nullable = false)
+    private int amount;
 
     @Column(name = "order_id",nullable = false)
     private Long orderId;
@@ -57,12 +57,12 @@ public class OrderItem {
         this.brand = brand;
     }
 
-    public int getCount() {
-        return count;
+    public int getAmount() {
+        return amount;
     }
 
-    public void setCount(int count) {
-        this.count = count;
+    public void setAmount(int amount) {
+        this.amount = amount;
     }
 
     public Long getOrderId() {

@@ -11,6 +11,7 @@ import com.shestakam.order.orderItem.entity.OrderItem;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
@@ -38,6 +39,7 @@ public class BrandController {
     }
 
     @Autowired
+    @Qualifier("jdbcOrderDao")
     public void setOrderDao(OrderDao orderDao) {
         this.orderDao = orderDao;
     }
@@ -66,7 +68,7 @@ public class BrandController {
             PriceCount priceCount = new PriceCount();
             CoffeeBrand brand = coffeeBrandService.get(elem.getBrandId());
             priceCount.setPrice(brand.getPrice());
-            priceCount.setCount(elem.getCount());
+            priceCount.setCount(elem.getAmount());
             priceCountList.add(priceCount);
         }
        /* return "[{\"count\":1,\"brandId\":1}]";*/

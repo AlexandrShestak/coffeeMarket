@@ -17,6 +17,7 @@
 
     <bean id="hibernateCoffeeBrandDao" class="com.shestakam.coffee.brand.dao.HibernateCoffeeBrandDao">
     </bean>
+    <bean id="jdbcCoffeeBrandDao" class="com.shestakam.coffee.brand.dao.JdbcCoffeeBrandDao"></bean>
 
     <bean id="hibernateOrderItemDao" class="com.shestakam.order.orderItem.dao.HibernateOrderItemDao">
     </bean>
@@ -24,10 +25,12 @@
     <bean id="hibernateOrderDao" class="com.shestakam.order.dao.HibernateOrderDao">
     </bean>
 
-    <bean id="jdbcCoffeeBrandDao" class="com.shestakam.coffee.brand.dao.JdbcCoffeeBrandDao"></bean>
+    <bean id="jdbcOrderDao" class="com.shestakam.order.dao.JdbcOrderDao"></bean>
+
+
 
     <bean id="coffeeBrandService" class="com.shestakam.coffee.brand.service.CoffeeBrandServiceImpl">
-        <property name="coffeeBrandDao" ref="hibernateCoffeeBrandDao"/>
+       <!-- <property name="coffeeBrandDao" ref="jdbcCoffeeBrandDao"/>-->
     </bean>
 
 
