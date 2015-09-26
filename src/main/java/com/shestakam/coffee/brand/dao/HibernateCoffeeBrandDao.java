@@ -11,10 +11,6 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 /**
- * Created by shestakam on 8.9.15.
- */
-
-/**
   hibernate dao class for CoffeeBrand entity
  */
 @Repository

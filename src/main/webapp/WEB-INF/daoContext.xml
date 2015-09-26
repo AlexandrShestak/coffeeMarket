@@ -28,12 +28,6 @@
     <bean id="jdbcOrderDao" class="com.shestakam.order.dao.JdbcOrderDao"></bean>
 
 
-
-    <bean id="coffeeBrandService" class="com.shestakam.coffee.brand.service.CoffeeBrandServiceImpl">
-       <!-- <property name="coffeeBrandDao" ref="jdbcCoffeeBrandDao"/>-->
-    </bean>
-
-
     <lang:groovy id="orderPriceCalculator"
                  script-source="classpath:groovy/GroovyOrderPriceCalculator.groovy"
                  refresh-check-delay="0">

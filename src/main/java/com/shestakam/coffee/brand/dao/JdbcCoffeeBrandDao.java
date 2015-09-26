@@ -5,7 +5,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.shestakam.db.JdbcConnection;
-import org.springframework.stereotype.Repository;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -17,13 +16,17 @@ import java.util.List;
 
 
 /**
- * Created by shestakam on 24.9.15.
+ jdbc dao class for CoffeeBrand entity
  */
-/*@Repository*/
 public class JdbcCoffeeBrandDao implements CoffeeBrandDao {
 
     private final static Logger logger = LogManager.getLogger(JdbcCoffeeBrandDao.class);
 
+    /**
+     * save coffeeBrand entity in database
+     * @param coffeeBrand entity which will be save
+     * @return id of new entity
+     */
     @Override
     public Long save(CoffeeBrand coffeeBrand) {
         int key = 0;
@@ -46,6 +49,11 @@ public class JdbcCoffeeBrandDao implements CoffeeBrandDao {
         return Long.valueOf(key);
     }
 
+    /**
+     * get coffeeBrand entity from database
+     * @param id of entity which will be load
+     * @return loaded CoffeeBrand entity
+     */
     @Override
     public CoffeeBrand get(Long id) {
         CoffeeBrand brand = new CoffeeBrand();
@@ -67,10 +75,13 @@ public class JdbcCoffeeBrandDao implements CoffeeBrandDao {
         return brand;
     }
 
+    /**
+     * method to load all coffee  brands entities from database
+     * @return all coffee  brand entities from database
+     */
     @Override
     public List<CoffeeBrand> getAll() {
         List<CoffeeBrand> brandList = new ArrayList<>();
-
         try (Connection connection = JdbcConnection.getConnection();
             Statement statement = connection.createStatement()){
             ResultSet rs = statement.executeQuery("select * from coffee_brand");
@@ -89,6 +100,10 @@ public class JdbcCoffeeBrandDao implements CoffeeBrandDao {
         return brandList;
     }
 
+    /**
+     * delete coffeeBrand entity by id
+     * @param id of entity which will be deleted
+     */
     @Override
     public void delete(Long id) {
         try(Connection connection = JdbcConnection.getConnection();
@@ -103,9 +118,12 @@ public class JdbcCoffeeBrandDao implements CoffeeBrandDao {
         }
     }
 
+    /**
+     * update existing coffeeBrand entity in database
+     * @param coffeeBrand updated entity which will replace existing entity with same id
+     */
     @Override
     public void update(CoffeeBrand coffeeBrand) {
-
         try(Connection connection = JdbcConnection.getConnection();
             PreparedStatement preparedStatement =
                     connection.prepareStatement("update coffee_brand set name=?,price=? where id=?")){

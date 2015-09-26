@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 /**
- * Created by shestakam on 22.9.15.
+ hibernate dao class for Order entity
  */
 @Transactional
 public class HibernateOrderDao implements OrderDao {
@@ -26,6 +26,11 @@ public class HibernateOrderDao implements OrderDao {
     }
 
 
+    /**
+     * save order entity in database
+     * @param order entity which will be save
+     * @return id of new entity
+     */
     @Override
     public Long save(Order order) {
         logger.debug("add order");
@@ -34,6 +39,11 @@ public class HibernateOrderDao implements OrderDao {
         return order.getId();
     }
 
+    /**
+     * get order entity from database
+     * @param id  of entity which will be load
+     * @return loaded order entity
+     */
     @Override
     public Order get(Long id) {
         logger.debug("get order with id : "+id);
@@ -42,6 +52,10 @@ public class HibernateOrderDao implements OrderDao {
         return order;
     }
 
+    /**
+     * method to load all order entities from database
+     * @return all order entities from database
+     */
     @Override
     public List<Order> getAll() {
         logger.debug("get all orders");
@@ -50,6 +64,10 @@ public class HibernateOrderDao implements OrderDao {
         return result;
     }
 
+    /**
+     * delete order entity by id
+     * @param id of entity which will be deleted
+     */
     @Override
     public void delete(Long id) {
         logger.debug("delete order with id : "+id);
@@ -58,6 +76,10 @@ public class HibernateOrderDao implements OrderDao {
         session.delete(order);
     }
 
+    /**
+     * update existing order entity in database
+     * @param order updated entity which will replace existing entity with same id
+     */
     @Override
     public void update(Order order) {
         logger.debug("update order  with id : " + order.getId());
@@ -65,6 +87,10 @@ public class HibernateOrderDao implements OrderDao {
         session.update(order);
     }
 
+    /**
+     * save order with order items
+     * @param order entity with order items @see com.shestakam.order.orderItem.entity.OrderItem which will be save
+     */
     @Override
     public void saveOrderWithOrderItems(Order order) {
         logger.debug("save order with order items ");

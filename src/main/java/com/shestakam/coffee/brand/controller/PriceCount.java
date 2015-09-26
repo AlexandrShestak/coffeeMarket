@@ -1,7 +1,8 @@
 package com.shestakam.coffee.brand.controller;
 
 /**
- * Created by shestakam on 23.9.15.
+ *  helper class which contains two fields price and count
+ *  to save this information in collection
  */
 public class PriceCount {
     private int price;

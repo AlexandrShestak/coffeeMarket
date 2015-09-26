@@ -19,13 +19,19 @@ import java.util.List;
 
 
 /**
- * Created by shestakam on 24.9.15.
+ jdbc dao class for order entity
  */
 @Repository
 public class JdbcOrderDao implements OrderDao {
 
     private final static Logger logger = LogManager.getLogger(JdbcOrderDao.class);
 
+
+    /**
+     * save order entity in database
+     * @param order entity which will be save
+     * @return id of new entity
+     */
     @Override
     public Long save(Order order) {
         int key = 0;
@@ -50,6 +56,11 @@ public class JdbcOrderDao implements OrderDao {
         return Long.valueOf(key);
     }
 
+    /**
+     * get order entity from database
+     * @param id of entity which will be load
+     * @return loaded order entity
+     */
     @Override
     public Order get(Long id) {
        Order order = new Order();
@@ -72,6 +83,10 @@ public class JdbcOrderDao implements OrderDao {
         return order;
     }
 
+    /**
+     * method to load all order entities from database
+     * @return all order entities from database
+     */
     @Override
     public List<Order> getAll() {
         List<Order> orderList = new ArrayList<>();
@@ -93,6 +108,10 @@ public class JdbcOrderDao implements OrderDao {
         return orderList;
     }
 
+    /**
+     * delete order entity by id
+     * @param id of entity which will be deleted
+     */
     @Override
     public void delete(Long id) {
         try(Connection connection = JdbcConnection.getConnection();
@@ -107,6 +126,10 @@ public class JdbcOrderDao implements OrderDao {
         }
     }
 
+    /**
+     * update existing order entity in database
+     * @param order updated entity which will replace existing entity with same id
+     */
     @Override
     public void update(Order order) {
         try(Connection connection = JdbcConnection.getConnection();
@@ -124,6 +147,10 @@ public class JdbcOrderDao implements OrderDao {
         }
     }
 
+    /**
+     * save order with order items
+     * @param order entity with order items @see com.shestakam.order.orderItem.entity.OrderItem which will be save
+     */
     @Override
     public void saveOrderWithOrderItems(Order order) {
         int key = 0;

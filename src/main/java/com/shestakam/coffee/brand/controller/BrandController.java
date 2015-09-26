@@ -2,8 +2,8 @@ package com.shestakam.coffee.brand.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.shestakam.coffee.brand.dao.CoffeeBrandDao;
 import com.shestakam.coffee.brand.entity.CoffeeBrand;
-import com.shestakam.coffee.brand.service.CoffeeBrandService;
 import com.shestakam.order.OrderPriceCalculator;
 import com.shestakam.order.dao.OrderDao;
 import com.shestakam.order.entity.Order;
@@ -26,7 +26,7 @@ public class BrandController {
 
     private final static Logger logger = LogManager.getLogger(BrandController.class);
 
-    private CoffeeBrandService coffeeBrandService;
+    private CoffeeBrandDao coffeeBrandDao;
     private OrderDao orderDao;
 
 
@@ -34,8 +34,9 @@ public class BrandController {
     private OrderPriceCalculator orderPriceCalculator;
 
     @Autowired
-    public void setCoffeeBrandService(CoffeeBrandService coffeeBrandService) {
-        this.coffeeBrandService = coffeeBrandService;
+    @Qualifier("jdbcCoffeeBrandDao")
+    public void setCoffeeBrandDao(CoffeeBrandDao coffeeBrandDao) {
+        this.coffeeBrandDao = coffeeBrandDao;
     }
 
     @Autowired
@@ -48,7 +49,7 @@ public class BrandController {
     public List<CoffeeBrand> getAllBrands() {
         logger.debug("get all brands");
 
-        return coffeeBrandService.getAll();
+        return coffeeBrandDao.getAll();
     }
 
   /*  @RequestMapping(value = "/groovy",method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
@@ -66,7 +67,7 @@ public class BrandController {
         List<PriceCount> priceCountList = new ArrayList<>();
         for (OrderItem elem : order){
             PriceCount priceCount = new PriceCount();
-            CoffeeBrand brand = coffeeBrandService.get(elem.getBrandId());
+            CoffeeBrand brand = coffeeBrandDao.get(elem.getBrandId());
             priceCount.setPrice(brand.getPrice());
             priceCount.setCount(elem.getAmount());
             priceCountList.add(priceCount);
@@ -82,7 +83,4 @@ public class BrandController {
 
         return 12;
     }
-
-
-
 }

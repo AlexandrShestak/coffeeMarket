@@ -9,10 +9,16 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 /**
- * Created by alexandr on 17.7.15.
+ * class which provide jdbc connection to database <br>
+ * use database.properties file with information
+ * about connection
+ *
  */
 public class JdbcConnection {
 
+    /**
+     * singleton Connection property
+     */
     private static Connection connection = null;
     private  final static Logger logger = LogManager.getLogger(JdbcConnection.class);
 
