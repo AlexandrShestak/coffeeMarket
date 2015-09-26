@@ -12,9 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.security.Principal;
 
-/**
- * Created by alexandr on 11.8.15.
- */
+
 @Controller
 public class AuthorizationController {
 

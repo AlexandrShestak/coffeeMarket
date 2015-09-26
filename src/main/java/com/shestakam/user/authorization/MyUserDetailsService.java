@@ -12,9 +12,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by alexandr on 13.8.15.
- */
+
 public class MyUserDetailsService implements UserDetailsService {
 
     private UserDao userDao;
@@ -25,12 +23,13 @@ public class MyUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
-        User user = userDao.get(1L);
+        User user = userDao.getUserByName(s);
         List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
 
         for (Role role : userDao.getRoles(s)) {
             authorities.add(new SimpleGrantedAuthority(role.getRole()));
         }
+        authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
 
         return new org.springframework.security.core.userdetails.User(user.getUsername(),user.getPassword(), authorities);
         }

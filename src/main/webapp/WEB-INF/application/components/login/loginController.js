@@ -1,9 +1,3 @@
-/**
- * Created by shestakam on 24.9.15.
- */
-/**
- * Created by shestakam on 21.9.15.
- */
 angular.module('coffeeShopApplication').controller('loginController', function($rootScope, $scope, $http, $location) {
 
 
@@ -42,6 +36,9 @@ angular.module('coffeeShopApplication').controller('loginController', function($
         });
     }
 
+    $scope.registration = function(){
+        $location.path("/registration");
+    }
 });
 
 

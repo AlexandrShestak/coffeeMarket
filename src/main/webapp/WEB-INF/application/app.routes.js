@@ -5,7 +5,7 @@ shop.config(function($routeProvider){
         .when('/order', { controller: 'contactInformationController', templateUrl: 'application/components/contactInformation/contactInformation.html' })
         .when('/orderEnd', { controller: '', templateUrl: 'application/components/orderEnd/orderEnd.html' })
         .when('/login', { controller: 'loginController', templateUrl: 'application/components/login/login.html' })
-
+        .when('/registration', { controller: 'registrationController', templateUrl: 'application/components/registration/registration.html' })
         .otherwise( { redirectTo: '/login' } );
 });
 shop.config(['$resourceProvider', function($resourceProvider) {

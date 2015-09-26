@@ -1,12 +1,12 @@
 package com.shestakam.user.entity;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
-/**
- * Created by alexandr on 17.7.15.
- */
+
 @Entity
 @Table(name = "users")
 public class User {
@@ -61,7 +61,7 @@ public class User {
         this.email = email;
     }
 
-
+    @JsonIgnore
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "usersSet")
     public Set<Role> getRoleSet() {
         return roleSet;

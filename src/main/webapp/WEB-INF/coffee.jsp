@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: shestakam
-  Date: 1.9.15
-  Time: 9.32
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page isELIgnored="false" %>
 <!DOCTYPE html>
@@ -29,6 +22,8 @@
             src="${pageContext.servletContext.contextPath}/application/components/contactInformation/contactInformationController.js"></script>
     <script type="text/javascript"
             src="${pageContext.servletContext.contextPath}/application/components/login/loginController.js"></script>
+    <script type="text/javascript"
+            src="${pageContext.servletContext.contextPath}/application/components/registration/registrationController.js"></script>
     <script type="text/javascript"
             src="${pageContext.servletContext.contextPath}/asserts/script/jquery-2.1.4.js"></script>
     <script type="text/javascript" src="${pageContext.servletContext.contextPath}/asserts/script/myJquery.js"></script>

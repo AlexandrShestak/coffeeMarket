@@ -1,4 +1,4 @@
-<form class="form-horizontal col-md-6 col-md-offset-4" action="/registration" method="POST">
+<form class="form-horizontal col-md-6 col-md-offset-4" >
     <fieldset>
         <div id="legend">
             <legend class=""> Регистрация </legend>
@@ -7,8 +7,7 @@
             <!-- Username -->
             <label class="control-label"  for="username"> Введите логин :</label>
             <div class="controls">
-                <input type="text" id="username" name="username"  class="input-xlarge">
-                <p class="help-block">Username can contain any letters or numbers, without spaces</p>
+                <input type="text" id="username"  ng-model="user.login"  class="input-xlarge">
             </div>
         </div>
 
@@ -16,8 +15,7 @@
             <!-- E-mail -->
             <label class="control-label" for="email">  Введите адрес электронной почты :</label>
             <div class="controls">
-                <input type="email" id="email" name="email" class="input-xlarge">
-                <p class="help-block">Please provide your E-mail</p>
+                <input type="email" id="email"  ng-model="user.email" class="input-xlarge">
             </div>
         </div>
 
@@ -25,22 +23,14 @@
             <!-- Password-->
             <label class="control-label" for="password"> Введите пароль</label>
             <div class="controls">
-                <input type="hidden" name="action" value="registration">
-                <input type="password" id="password" name="password" placeholder="" class="input-xlarge">
-                <p class="help-block">Password should be at least 4 characters</p>
+                <input type="password" id="password"  ng-model="user.password" class="input-xlarge">
             </div>
         </div>
 
-       <!-- <c:if test="${not empty errorMessage}">
-            <div class="control-group">
-                <div class="alert alert-warning" role="alert">${errorMessage}</div>
-            </div>
-        </c:if>
--->
+
         <div class="control-group">
-            <!-- Button -->
             <div class="controls">
-                <button class="btn btn-success"> Зарегистрировать </button>
+                <button class="btn btn-success" ng-click="registration()"> Зарегистрировать </button>
             </div>
         </div>
     </fieldset>

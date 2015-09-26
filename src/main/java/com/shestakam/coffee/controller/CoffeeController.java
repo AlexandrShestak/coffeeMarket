@@ -18,10 +18,4 @@ public class CoffeeController {
     public String returnStartPage(){
         return "coffee";
     }
-
-
-
-
-
-
 }

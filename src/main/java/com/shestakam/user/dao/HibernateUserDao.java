@@ -11,9 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.Set;
 
-/**
- * Created by alexandr on 30.7.15.
- */
+
 
 @Transactional
 public class HibernateUserDao implements UserDao {
@@ -70,7 +68,10 @@ public class HibernateUserDao implements UserDao {
     public Set<Role> getRoles(String username) {
         logger.debug("get roles  for  : " + username);
         Session session = sessionFactory.getCurrentSession();
-        User user = (User) session.get(User.class,username);
+        User user = (User) session.createQuery("from User where username=?")
+                .setParameter(0,username)
+                .list()
+                .get(0);
         Set<Role> roles = user.getRoleSet();
         return roles;
     }
@@ -79,12 +80,28 @@ public class HibernateUserDao implements UserDao {
     public void addRole(String username, String roleName) {
         logger.debug("add role  for " + username);
         Session session = sessionFactory.getCurrentSession();
-        User user = (User) session.get(User.class,username);
+        User user = (User) session.createQuery("from User where username=?")
+                .setParameter(0,username)
+                .list()
+                .get(0);
         Role role = (Role) session.createQuery("from Role where role=?")
                 .setParameter(0, roleName)
                 .list()
                 .get(0);
         user.getRoleSet().add(role);
         return ;
+    }
+
+    @Override
+    public User getUserByName(String name) {
+        logger.debug("get user by name");
+        Session session = sessionFactory.getCurrentSession();
+        List<User> users =  session.createQuery("from User where username=?")
+                .setParameter(0,name)
+                .list();
+        if (users.size() == 0){
+            return null;
+        }
+        return users.get(0);
     }
 }

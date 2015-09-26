@@ -4,11 +4,9 @@ import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
-/**
- * Created by alexandr on 19.8.15.
- */
+
 @Entity
-@Table(name = "role")
+@Table(name = "roles")
 public class Role {
 
     @Id
