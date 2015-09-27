@@ -6,16 +6,6 @@
 		http://www.springframework.org/schema/security
 		http://www.springframework.org/schema/security/spring-security.xsd">
 
-
-   <!-- <http pattern="/bootstrap-3.3.5/**" security="none"/>
-    <http pattern="/styles/**" security="none"/>
-    <http pattern="/" security="none"/>
-
-    <http pattern="/login*" security="none"/>
-    <http pattern="/WEB-INF/pages/login.jsp" security="none"/>-->
-
-    <http pattern="/bootstrap-3.3.5/**" security="none" />
-    <http pattern="/styles/**" security="none" />
     <http pattern="/coffee"  security="none" />
     <http pattern="/coffee#/login"  security="none" />
     <http pattern="/registration*"  security="none" />
@@ -26,19 +16,13 @@
         <form-login
                 login-page='/coffee#/login'
                 username-parameter="username"
-                password-parameter="password"
-                authentication-failure-url="/login?error"/>
-
-        <logout logout-success-url="/login?logout"/>
+                password-parameter="password"/>
         <csrf disabled="true"/>
     </http>
 
     <authentication-manager>
         <authentication-provider user-service-ref="myUserDetailsService" >
-
         </authentication-provider>
     </authentication-manager>
-
-
 
 </beans:beans>
