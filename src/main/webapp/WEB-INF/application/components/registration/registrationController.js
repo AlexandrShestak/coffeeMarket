@@ -10,6 +10,7 @@ angular.module('coffeeShopApplication').controller('registrationController', fun
         $http.post('registration',dataObj).success(function() {
             $location.path("/login");
         }).error(function() {
+            $scope.message = "Пользователь с таким именем уже зарегистрирован";
             $location.path("/registration");
         });
     }

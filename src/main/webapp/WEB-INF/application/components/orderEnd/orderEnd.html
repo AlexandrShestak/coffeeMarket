@@ -1,4 +1,4 @@
-<div>
+<div ng-show="authenticated">
   <table class="table">
    <tr>
      <td>
@@ -6,4 +6,11 @@
      </td>
     </tr>
   </table>
+</div>
+
+
+<div  ng-show="!authenticated">
+    <a href="#login">
+        <p>Login please</p>
+    </a>
 </div>

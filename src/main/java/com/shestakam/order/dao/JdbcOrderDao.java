@@ -162,9 +162,9 @@ public class JdbcOrderDao implements OrderDao {
             PreparedStatement psToAddItems =
                     connection.prepareStatement("insert into order_item (amount, brand_id, order_id) " +
                             "values (?, ?, ?)")) {
-            preparedStatement.setString(1, order.getUsername());
-            preparedStatement.setString(2, order.getAddress());
-            preparedStatement.setInt(3,order.getTotalPrice());
+            preparedStatement.setString(1, order.getAddress());
+            preparedStatement.setInt(2, order.getTotalPrice());
+            preparedStatement.setString(3, order.getUsername());
             preparedStatement.executeUpdate();
             ResultSet keys = preparedStatement.getGeneratedKeys();
             keys.next();

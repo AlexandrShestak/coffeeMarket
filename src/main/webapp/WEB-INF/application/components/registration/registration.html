@@ -1,11 +1,11 @@
-<form class="form-horizontal col-md-6 col-md-offset-4" >
+<form class="form-horizontal col-md-6 col-md-offset-2" >
     <fieldset>
         <div id="legend">
             <legend class=""> Регистрация </legend>
         </div>
         <div class="control-group">
             <!-- Username -->
-            <label class="control-label"  for="username"> Введите логин :</label>
+            <label class="control-label"  for="username">Введите логин :</label>
             <div class="controls">
                 <input type="text" id="username"  ng-model="user.login"  class="input-xlarge">
             </div>
@@ -13,7 +13,7 @@
 
         <div class="control-group">
             <!-- E-mail -->
-            <label class="control-label" for="email">  Введите адрес электронной почты :</label>
+            <label class="control-label" for="email">Введите email :</label>
             <div class="controls">
                 <input type="email" id="email"  ng-model="user.email" class="input-xlarge">
             </div>
@@ -21,9 +21,15 @@
 
         <div class="control-group">
             <!-- Password-->
-            <label class="control-label" for="password"> Введите пароль</label>
+            <label class="control-label" for="password">Введите пароль :</label>
             <div class="controls">
                 <input type="password" id="password"  ng-model="user.password" class="input-xlarge">
+            </div>
+        </div>
+
+        <div ng-if="message">
+            <div class="control-group">
+                <div class="alert alert-warning" role="alert">{{message}}</div>
             </div>
         </div>
 

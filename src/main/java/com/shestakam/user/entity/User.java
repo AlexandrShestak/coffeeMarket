@@ -61,8 +61,11 @@ public class User {
         this.email = email;
     }
 
-    @JsonIgnore
-    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "usersSet")
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(name = "user_roles",catalog = "coffeeMarket", joinColumns = {
+            @JoinColumn(name = "user_id", nullable = false, updatable = false) },
+            inverseJoinColumns = { @JoinColumn(name = "role_id",
+                    nullable = false, updatable = false) })
     public Set<Role> getRoleSet() {
         return roleSet;
     }

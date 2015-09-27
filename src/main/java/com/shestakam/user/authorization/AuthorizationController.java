@@ -1,6 +1,7 @@
 package com.shestakam.user.authorization;
 
 import com.shestakam.user.dao.UserDao;
+import com.shestakam.user.entity.User;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Controller;
@@ -17,7 +18,6 @@ import java.security.Principal;
 public class AuthorizationController {
 
     private  final static Logger logger = LogManager.getLogger(AuthorizationController.class);
-    private static final String LOGIN_PAGE = "login";
 
     private UserDao userDao;
 
@@ -29,16 +29,21 @@ public class AuthorizationController {
 
     @RequestMapping("/user")
     @ResponseBody
-    public Principal user(Principal user){
-        return user;
+    public void user(Principal user){
+        return ;
     }
 
 
 
 
     @RequestMapping(value = "/login" , method = RequestMethod.GET)
-    public String login(@RequestParam(value = "error", required = false) String error,
-                              @RequestParam(value = "logout", required = false) String logout) {
+    public String login(Principal user) {
+        logger.debug("login");
+
+      /*  User userInDatabase = userDao.getUserByName(user.getName());
+        if ( userInDatabase == null){
+            String messs
+        }*/
 /*
         logger.debug("login");
         ModelAndView model = new ModelAndView();

@@ -21,17 +21,20 @@
             </tr>
         </table>
     </form>
-
-    <div class="row">
-        <div class="col-md-4 col-md-offset-4">
-            <table class="table">
-                <tr>
-                    <td> Или зарегистрируйтесь сейчас </td>
-                    <td>
-                        <button ng-click="registration()"  class="btn btn-warning"> Регистрация </button>
-                    </td>
-                </tr>
-            </table>
+    <div ng-if="message">
+        <div class="control-group">
+            <div class="alert alert-warning" role="alert">{{message}}</div>
         </div>
+    </div>
+
+    <div class="col-md-4 col-md-offset-2">
+        <table class="table">
+            <tr>
+                <td> Или зарегистрируйтесь сейчас </td>
+                <td>
+                    <button ng-click="registration()"  class="btn btn-warning"> Регистрация </button>
+                </td>
+            </tr>
+        </table>
     </div>
 </div>

@@ -1,4 +1,4 @@
-<div ng-controller="contactInformationController">
+<div ng-controller="contactInformationController" ng-show="authenticated">
       <h2>Цена заказа : {{totalPrice}}</h2>
 
 
@@ -41,4 +41,11 @@
     </tr>
   </table>
   {{totalPrice()}}
+</div>
+
+
+<div  ng-show="!authenticated">
+  <a href="#login">
+    <p>Login please</p>
+  </a>
 </div>

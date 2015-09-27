@@ -1,5 +1,4 @@
-<div  ng-controller="simpleBrandController" >
-
+<div  ng-controller="simpleBrandController"   ng-show="authenticated">
     <h1>Поиск: <input type="text" data-ng-model="searchText"/></h1>
 <!--    <h2>Цена заказа :</h2>  {{totalPrice()}}-->
     <table class="table">
@@ -19,9 +18,11 @@
             <input  type="text" hidden="hidden" ng-model="brand.count" ng-init="brand.count = 0" class="countCoffee">
         </tr>
     </table>
-
     <button class="btn-warning" ng-click="postQuery()">Post query</button>
+</div>
 
-
-
+<div  ng-show="!authenticated">
+    <a href="#login">
+        <p>Login please</p>
+    </a>
 </div>

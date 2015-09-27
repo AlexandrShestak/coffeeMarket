@@ -8,13 +8,16 @@ angular.module('coffeeShopApplication').controller('loginController', function($
         var headers = credentials ? {authorization : "Basic "
         + btoa(credentials.username + ":" + credentials.password)
         } : {};
-
+       /* var headers = credentials ? {authorization : "Basic "
+        + btoa("user:pafss")
+        } : {};*/
         $http.get('user', {headers : headers}).success(function(data) {
-            if (data.name) {
+            $rootScope.authenticated = true;
+           /* if (data.name) {
                 $rootScope.authenticated = true;
             } else {
                 $rootScope.authenticated = false;
-            }
+            }*/
             callback && callback();
         }).error(function() {
             $rootScope.authenticated = false;
@@ -32,6 +35,7 @@ angular.module('coffeeShopApplication').controller('loginController', function($
             } else {
                 $location.path("/login");
                 $scope.error = true;
+                $scope.message = "Неправильное имя пользователя или пароль"
             }
         });
     }

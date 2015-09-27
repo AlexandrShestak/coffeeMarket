@@ -89,6 +89,7 @@ public class HibernateUserDao implements UserDao {
                 .list()
                 .get(0);
         user.getRoleSet().add(role);
+        session.update(user);
         return ;
     }
 

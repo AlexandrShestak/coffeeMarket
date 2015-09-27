@@ -1,5 +1,7 @@
 package com.shestakam.user.entity;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -18,11 +20,9 @@ public class Role {
     private String role;
 
 
-    @ManyToMany()
-    @JoinTable(name = "user_roles", catalog = "coffeeMarket", joinColumns = {
-            @JoinColumn(name = "role_id", nullable = false, updatable = false) },
-            inverseJoinColumns = { @JoinColumn(name = "user_id",
-                    nullable = false, updatable = false) })
+
+    @JsonIgnore
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "roleSet")
     private Set<User> usersSet = new HashSet<>(0);
 
     public Long getId() {
