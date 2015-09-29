@@ -1,6 +1,7 @@
 package com.shestakam.coffee.brand.entity;
 
 import com.shestakam.order.orderItem.entity.OrderItem;
+import org.codehaus.jackson.annotate.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -40,6 +41,7 @@ public class CoffeeBrand {
     /**
      * parameter which contains order items for ths coffee brand title
      */
+    @JsonIgnore
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "brand")
     private Set<OrderItem> orderItemSet = new HashSet<>(0);
 
@@ -86,7 +88,6 @@ public class CoffeeBrand {
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (price != null ? price.hashCode() : 0);
-        result = 31 * result + (orderItemSet != null ? orderItemSet.hashCode() : 0);
         return result;
     }
 }

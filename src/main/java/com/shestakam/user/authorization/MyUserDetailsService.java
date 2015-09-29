@@ -29,7 +29,6 @@ public class MyUserDetailsService implements UserDetailsService {
         for (Role role : userDao.getRoles(s)) {
             authorities.add(new SimpleGrantedAuthority(role.getRole()));
         }
-        authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
 
         return new org.springframework.security.core.userdetails.User(user.getUsername(),user.getPassword(), authorities);
         }

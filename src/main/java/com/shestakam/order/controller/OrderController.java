@@ -35,14 +35,11 @@ public class OrderController {
     @Autowired
     private OrderPriceCalculator orderPriceCalculator;
 
-    @Autowired
-    @Qualifier("jdbcOrderDao")
     public void setOrderDao(OrderDao orderDao) {
         this.orderDao = orderDao;
     }
 
-    @Autowired
-    @Qualifier("jdbcCoffeeBrandDao")
+
     public void setCoffeeBrandDao(CoffeeBrandDao coffeeBrandDao) {
         this.coffeeBrandDao = coffeeBrandDao;
     }

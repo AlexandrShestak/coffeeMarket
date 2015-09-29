@@ -20,8 +20,6 @@ public class BrandController {
 
     private CoffeeBrandDao coffeeBrandDao;
 
-    @Autowired
-    @Qualifier("jdbcCoffeeBrandDao")
     public void setCoffeeBrandDao(CoffeeBrandDao coffeeBrandDao) {
         this.coffeeBrandDao = coffeeBrandDao;
     }
