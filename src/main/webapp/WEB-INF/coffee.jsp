@@ -35,7 +35,7 @@
 <body>
 <div style="padding:40px 0px 40px 0px">
     <!--  Placeholder for the views  -->
-    <div class="container" ng-cloak class="ng-cloak">
+    <div class="container">
         <div class="col-md-6 col-md-offset-3">
             <div ng-view></div>
         </div>

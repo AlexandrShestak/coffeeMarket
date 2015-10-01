@@ -15,7 +15,7 @@
          http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 
-    <import resource="daoContext.xml"/>
+    <import resource="beansContext.xml"/>
 
     <mvc:annotation-driven/>
 

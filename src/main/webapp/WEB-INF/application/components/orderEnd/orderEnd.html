@@ -1,16 +1,20 @@
 <div ng-show="authenticated">
-  <table class="table">
-   <tr>
-     <td>
-       Заказ отправлен.
-     </td>
-    </tr>
-  </table>
+    <table class="table">
+        <tr>
+            <td>
+                Заказ отправлен.
+            </td>
+            <td>
+                <a href="#brands" class="btn btn-success"><span class="glyphicon glyphicon-menu-left"></span>Вернуться на главную
+                </a>
+            </td>
+        </tr>
+    </table>
 </div>
 
 
 <div  ng-show="!authenticated">
     <a href="#login">
-        <p>Login please</p>
+        <p>Авторизуйтесь пожалуйста</p>
     </a>
 </div>

@@ -1,7 +1,6 @@
 package com.shestakam.order.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.shestakam.coffee.brand.controller.PriceCount;
 import com.shestakam.coffee.brand.dao.CoffeeBrandDao;
 import com.shestakam.coffee.brand.entity.CoffeeBrand;
 import com.shestakam.order.OrderPriceCalculator;
@@ -9,7 +8,6 @@ import com.shestakam.order.dao.OrderDao;
 import com.shestakam.order.entity.Order;
 import com.shestakam.order.orderItem.entity.OrderItem;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -45,17 +43,18 @@ public class OrderController {
     }
 
     @RequestMapping(value = "/calculatePrice",method = RequestMethod.POST ,consumes = MediaType.APPLICATION_JSON_VALUE )
-    public int calculateOrderPride(@RequestBody List<OrderItem> order) throws JsonProcessingException {
+    public int calculateOrderPrice(@RequestBody List<OrderItem> order) throws JsonProcessingException {
         logger.debug("get all brands");
         List<PriceCount> priceCountList = new ArrayList<>();
-        for (OrderItem elem : order){
+        for (OrderItem orderItem : order){
             PriceCount priceCount = new PriceCount();
-            CoffeeBrand brand = coffeeBrandDao.get(elem.getBrandId());
+            CoffeeBrand brand = coffeeBrandDao.get(orderItem.getBrandId());
             priceCount.setPrice(brand.getPrice());
-            priceCount.setCount(elem.getAmount());
+            priceCount.setCount(orderItem.getAmount());
             priceCountList.add(priceCount);
         }
-        return orderPriceCalculator.calculatePrice(priceCountList);
+        int totalPrice =  orderPriceCalculator.calculatePrice(priceCountList);
+        return totalPrice;
     }
 
     @RequestMapping(value = "/makeOrder",method = RequestMethod.POST ,consumes = MediaType.APPLICATION_JSON_VALUE )

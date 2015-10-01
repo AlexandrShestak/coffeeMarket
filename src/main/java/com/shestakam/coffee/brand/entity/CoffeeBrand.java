@@ -9,9 +9,9 @@ import java.util.Set;
 
 
 /**
- * Public class <code>CoffeeBrand</code> is one of Entities
+ * Public class <code>CoffeeBrand</code> is one of entities
  * classes. Its content is fully consistent with Table coffee_brand
- * in data base, which we use for. The main role is to store
+ * in database, which we use for. The main role is to store
  * associated with the table information(data).
  */
 @Entity

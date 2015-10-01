@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class CoffeeController {
 
+
     @RequestMapping(value = "/coffee")
     public String returnPage(){
         return "coffee";

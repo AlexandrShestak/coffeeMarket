@@ -2,9 +2,7 @@
  * Created by shestakam on 21.9.15.
  */
 angular.module('coffeeShopApplication').controller('simpleBrandController', function($scope,$http,$location,brandFactory,orderItemService) {
-    /*var brands = brandFactory.query(function() {
-        console.log("get brands(ajax)");
-    })*/
+
     $scope.brands = brandFactory.query(function() {
         console.log("get brands(ajax)");
     })
@@ -18,10 +16,6 @@ angular.module('coffeeShopApplication').controller('simpleBrandController', func
                 var orderItem = {};
                 orderItem.amount = brand.count;
                 orderItem.brandId = brand.id;
-              /*  delete brand.check
-                var brandItemJson = JSON.stringify(brand)
-                brandItemJson = brandItemJson.replace("\"name\":", "\"brand\":");
-                brand = JSON.parse(brandItemJson);*/
                 dataObj.push(orderItem);
                 orderItemService.addOrderItem(orderItem);
             }
@@ -31,7 +25,12 @@ angular.module('coffeeShopApplication').controller('simpleBrandController', func
         res.success(function(data, status, headers, config) {
             total = data;
             orderItemService.saveTotalPrice(total);
-            $location.path('/order')
+            if (total == 0){
+                $scope.message = "Выберите что-нибудь";
+                $location.path('/brands')
+            }else {
+                $location.path('/order')
+            }
         });
     }
 });

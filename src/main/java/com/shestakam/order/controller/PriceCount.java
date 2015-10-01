@@ -1,4 +1,4 @@
-package com.shestakam.coffee.brand.controller;
+package com.shestakam.order.controller;
 
 /**
  *  helper class which contains two fields price and count

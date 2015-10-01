@@ -8,9 +8,9 @@ import java.util.Set;
 
 
 /**
- * Public class <code>Order</code> is one of Entities
+ * Public class <code>Order</code> is one of entities
  * classes. Its content is fully consistent with Table user_order
- * in data base, which we use for. The main role is to store
+ * in database, which we use for. The main role is to store
  * associated with the table information(data).
  */
 @Entity

@@ -1,7 +1,7 @@
 <div ng-controller="contactInformationController" ng-show="authenticated">
-      <h2>Цена заказа : {{totalPrice}}</h2>
-
-
+  <a href="#brands" class="btn btn-success"><span class="glyphicon glyphicon-menu-left"></span>Вернуться на главную
+  </a>
+  <h2>Цена заказа : {{totalPrice}}</h2>
   <form name="userInformation">
     <h1>Контактная информация</h1>
     <table class="table">
@@ -11,7 +11,7 @@
         </td>
         <td>
           <input type="text" name="username" ng-model="user.username" required >
-          <span style="color:red" ng-show="userInformation.username.$error.required">Username is required.</span>
+          <span style="color:red" ng-show="userInformation.username.$error.required"></span>
         </td>
       </tr>
       <tr>
@@ -20,32 +20,19 @@
         </td>
         <td>
           <input type="text" name="address" ng-model="user.address"  required >
-          <span  style="color:red" ng-show="userInformation.address.$error.required">Address is required.</span>
+          <span  style="color:red" ng-show="userInformation.address.$error.required"></span>
         </td>
       </tr>
       <tr >
         <td colspan="2" align="center">
-            <button class="btn-info" ng-click="makeOrder()" >Оформить заказ</button>
+          <button class="btn-info" ng-click="makeOrder()" >Оформить заказ</button>
         </td>
       </tr>
     </table>
   </form>
-
-  {{user}}
-
-  <table class="table">
-    <tr ng-repeat="item in orderItems">
-      <td>
-        {{item}}
-      </td>
-    </tr>
-  </table>
-  {{totalPrice()}}
 </div>
-
-
 <div  ng-show="!authenticated">
   <a href="#login">
-    <p>Login please</p>
+    <p>Авторизуйтесь пожалуйста</p>
   </a>
 </div>

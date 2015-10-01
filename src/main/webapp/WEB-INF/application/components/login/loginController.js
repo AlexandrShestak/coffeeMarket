@@ -11,13 +11,8 @@ angular.module('coffeeShopApplication').controller('loginController', function($
        /* var headers = credentials ? {authorization : "Basic "
         + btoa("user:pafss")
         } : {};*/
-        $http.get('user', {headers : headers}).success(function(data) {
+        $http.get('login', {headers : headers}).success(function(data) {
             $rootScope.authenticated = true;
-           /* if (data.name) {
-                $rootScope.authenticated = true;
-            } else {
-                $rootScope.authenticated = false;
-            }*/
             callback && callback();
         }).error(function() {
             $rootScope.authenticated = false;
@@ -31,10 +26,8 @@ angular.module('coffeeShopApplication').controller('loginController', function($
         authenticate($scope.credentials, function() {
             if ($rootScope.authenticated) {
                 $location.path("/brands");
-                $scope.error = false;
             } else {
                 $location.path("/login");
-                $scope.error = true;
                 $scope.message = "Неправильное имя пользователя или пароль"
             }
         });

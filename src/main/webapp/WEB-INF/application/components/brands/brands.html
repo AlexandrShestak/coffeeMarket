@@ -1,28 +1,34 @@
 <div  ng-controller="simpleBrandController"   ng-show="authenticated">
-    <h1>Поиск: <input type="text" data-ng-model="searchText"/></h1>
-<!--    <h2>Цена заказа :</h2>  {{totalPrice()}}-->
+    <h1>Поиск:</h1>
+    <input type="text" data-ng-model="searchText"/>
+    <div ng-if="message">
+        <div class="control-group">
+            <div class="alert alert-warning" role="alert">{{message}}</div>
+        </div>
+    </div>
     <table class="table">
         <tr ng-repeat="brand in brands | orderBy:'name'">
             <td>
-              <input type="checkbox" class="checkCoffee" ng-model="brand.check" ng-init="brand.check = false">
+                <input type="checkbox" class="checkCoffee" ng-model="brand.check" ng-init="brand.check = false">
             </td>
-            <td>
+            <td >
                 <p ng-bind-html="brand.name  | highlight:searchText"></p>
             </td>
-            <td>
-            <input  type="number" min="1" ng-show="brand.check" ng-model="brand.count" ng-init="brand.count = 1" class="countCoffee">
+            <td >
+                Цена : {{brand.price}}
             </td>
             <td>
-                {{brand}}
+                <input  type="number" min="1" ng-show="brand.check" ng-model="brand.count" ng-init="brand.count = 1" class="countCoffee">
             </td>
             <input  type="text" hidden="hidden" ng-model="brand.count" ng-init="brand.count = 0" class="countCoffee">
+
         </tr>
     </table>
-    <button class="btn-warning" ng-click="postQuery()">Post query</button>
+    <button class="btn-warning" ng-click="postQuery()">Заказать</button>
 </div>
 
 <div  ng-show="!authenticated">
     <a href="#login">
-        <p>Login please</p>
+        <p>Авторизуйтесь пожалуйста</p>
     </a>
 </div>

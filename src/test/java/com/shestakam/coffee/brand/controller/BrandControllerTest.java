@@ -1,12 +1,10 @@
 package com.shestakam.coffee.brand.controller;
 
 import com.shestakam.coffee.brand.dao.CoffeeBrandDao;
-import com.shestakam.coffee.brand.entity.CoffeeBrand;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import static org.junit.Assert.*;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppContextSetup;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,15 +23,14 @@ import static org.hamcrest.Matchers.is;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppContextSetup;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration({"/dispatcherServlet-servlet.xml","/daoContext.xml"})
+@ContextConfiguration({"/dispatcherServlet-servlet.xml", "/beansContext.xml"})
 @WebAppConfiguration
 public class BrandControllerTest {
 
-   private MockMvc mockMvc;
+    private MockMvc mockMvc;
 
     private MediaType contentType = new MediaType(MediaType.APPLICATION_JSON.getType(),
             MediaType.APPLICATION_JSON.getSubtype(),

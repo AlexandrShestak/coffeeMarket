@@ -72,7 +72,6 @@ public class HibernateCoffeeBrandDao implements CoffeeBrandDao {
         session.delete(brand);
     }
 
-
     /**
      * update existing coffeeBrand entity in database
      * @param coffeeBrand updated entity which will replace existing entity with same id

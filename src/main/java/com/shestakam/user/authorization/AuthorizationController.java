@@ -19,44 +19,10 @@ public class AuthorizationController {
 
     private  final static Logger logger = LogManager.getLogger(AuthorizationController.class);
 
-    private UserDao userDao;
 
-
-    public void setUserDao(UserDao userDao) {
-        this.userDao = userDao;
-    }
-
-
-    @RequestMapping("/user")
+    @RequestMapping(value = "/login" )
     @ResponseBody
-    public void user(Principal user){
-        return ;
-    }
-
-
-
-
-    @RequestMapping(value = "/login" , method = RequestMethod.GET)
-    public String login(Principal user) {
-        logger.debug("login");
-
-      /*  User userInDatabase = userDao.getUserByName(user.getName());
-        if ( userInDatabase == null){
-            String messs
-        }*/
-/*
-        logger.debug("login");
-        ModelAndView model = new ModelAndView();
-        if (error != null) {
-            logger.debug("Invalid username and password!");
-            model.addObject("errorMessage", "Invalid username and password!");
-        }
-        if (logout != null) {
-            logger.debug("You've been logged out successfully.");
-            model.addObject("logoutMessage", "You've been logged out successfully.");
-        }
-        model.setViewName(LOGIN_PAGE);
-        logger.debug("successfully login");*/
-        return "coffee";
+    public void login(Principal user) {
+        return;
     }
 }
