@@ -58,6 +58,9 @@
         <property name="coffeeBrandDao" ref="hibernateCoffeeBrandDao"/>
     </bean>
 
+    <bean id="registrationController" class="com.shestakam.user.authorization.RegistrationController">
+        <property name="userDao" ref="hibernateUsersDao"/>
+    </bean>
 
     <bean id="myDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
